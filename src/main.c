@@ -14,6 +14,11 @@
     #include "../include/user_maintainance.h"
 #endif
 
+#ifdef WINDOWS
+    #include "..\include\student.h"
+#else
+    #include "../include/student.h"
+#endif
 char *rtrim(char *s){
     char* back = s + strlen(s);
     while(isspace(*--back));
@@ -78,7 +83,7 @@ int main(int argc, char *argv[]){
 				//code
 			}
 			else if(strcmp(u_type,"Student")==0){
-				//codeeeee
+				student(id1);
 			}
 			else if(strcmp(u_type,"Professor")==0){
 				//code

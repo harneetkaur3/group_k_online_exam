@@ -2,6 +2,14 @@
 #include<stdlib.h>
 #include<string.h>
 #define range 10
+
+
+#ifdef WINDOWS
+    #include "..\include\validation.h"
+#else
+    #include "../include/validation.h"
+#endif
+
 char* login(char *u_id, char *pwd){
 	FILE *user_credentials;
 	char un[range];
@@ -34,4 +42,6 @@ char* login(char *u_id, char *pwd){
 			return "invalid";
 		}
 	}
+	fclose(user_credentials);
 }
+
