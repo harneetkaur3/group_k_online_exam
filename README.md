@@ -8,7 +8,7 @@ It can be adapted and used by universities, schools, and colleges to conduct onl
 # Authors
 
 - Abinava Murali -abinavamurali.parupudi@carleton.ca 
-- Esraa -ESRAAABUJAYYAB@cmail.carleton.ca
+- Esraa Abujayyab -EsraaAbujayyab@cmail.carleton.ca
 - Harneet Kaur -HarneetKaur3@cmail.carleton.ca
 - Sanjana Dharan -SanjanaDharan@cmail.carleton.ca
 
