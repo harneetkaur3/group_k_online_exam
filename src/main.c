@@ -1,3 +1,13 @@
+/**
+* \file main.c
+*
+* Contains the main function from which different functions
+* located in other files are called to perform different
+* tasks assigned for student and Professor based on the
+* user inputs.
+*
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include <termios.h>
@@ -7,25 +17,27 @@
 
 #define range 5
 #define id_range 10
-
 #ifdef WINDOWS
     #include "..\include\user_maintainance.h"
+	#include "..\include\validation.h"
+	 #include "..\include\student.h"
 #else
     #include "../include/user_maintainance.h"
+	#include "../include/validation.h"
+	#include "../include/student.h"
 #endif
 
-#ifdef WINDOWS
-    #include "..\include\student.h"
-#else
-    #include "../include/student.h"
-#endif
-char *rtrim(char *s){
-    char* back = s + strlen(s);
-    while(isspace(*--back));
-    *(back+1) = '\0';
-    return s;
-}
 
+/**
+* \brief Get or scan the value from the console screen
+*
+* Function can be called for any type of user-> Admin, Manager, Employee who want to scan the values from console screeen
+*
+* @param [void] No Arguments will be passed
+*
+* \return User_Type: Integer value 'ch' for all case
+*
+*/
 
 int getch(void){
     struct termios oldt,newt;
@@ -38,6 +50,17 @@ int getch(void){
     tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
     return ch;
 }
+
+
+/**
+* \brief The main function which distributes various tasks to other functions.
+*
+* Expects a user type from the login function
+* Based on the functionalities provided for the user type
+* and corresponding user inputs calls the other functions.
+*
+*/
+
 
 int main(int argc, char *argv[]){
 	int i,id;
@@ -84,6 +107,8 @@ int main(int argc, char *argv[]){
 			}
 			else if(strcmp(u_type,"Student")==0){
 				student(id1);
+				
+		
 			}
 			else if(strcmp(u_type,"Professor")==0){
 				//code
