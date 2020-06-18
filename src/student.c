@@ -3,16 +3,27 @@
 #include<string.h>
 #include <termios.h>
 #include <unistd.h>
-
 #ifdef WINDOWS
     #include "..\include\user_maintainance.h"
+	#include "..\include\validation.h"
 #else
     #include "../include/user_maintainance.h"
+	#include "../include/validation.h"
 #endif
 
 char t_id[2000][5];
 char t_name[2000][20];
 char instructor_id[2000][5];
+
+/**
+* \brief  int disp_topics() function display the topics
+*
+* Function dipslay all the topics from the topics.txt file and show to the user
+*
+*
+* \return Topic: Selected index of topic is returned to the calling function to start the test
+*
+*/
 int disp_topics(){
 	FILE *all_topics;
 	int ch;
@@ -59,13 +70,14 @@ void start_test(char *u_id)
 
 char* raiseTestRequest(char *u_id, int topic){
 	FILE *rqsts;
+	int request_id=generate_Id("requests.csv");
 	rqsts = fopen("requests.csv","a");
 	if(rqsts == NULL){
     	printf("Unable to create file. \n");
     	exit(EXIT_FAILURE);
     }
 	else{
-		fprintf(rqsts,"%d,%s,%s\n",1,t_name[topic],instructor_id[topic]);
+		fprintf(rqsts,"%d,%s,%s\n",request_id,t_name[topic],instructor_id[topic]);
 		printf("request raised");
 		
 	}
@@ -90,7 +102,7 @@ int student(char *u_id){
 			}
 			case 2:{
 				char dcsn[6];
-				//editProfile(u_id);
+				editProfile(u_id);
 				
 				break;
 			}
