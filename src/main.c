@@ -17,36 +17,16 @@
 
 #define range 5
 #define id_range 10
-
 #ifdef WINDOWS
     #include "..\include\user_maintainance.h"
+	#include "..\include\validation.h"
+	 #include "..\include\student.h"
 #else
     #include "../include/user_maintainance.h"
+	#include "../include/validation.h"
+	#include "../include/student.h"
 #endif
 
-#ifdef WINDOWS
-    #include "..\include\student.h"
-#else
-    #include "../include/student.h"
-#endif
-
-
-/**
-* \brief Removes the extra spacing
-*
-* It will delete or trim the extra space in the array of characters by calling this function
-*
-* @param[in] char *s Array of Character Pointer, pointing to the character of size char
-*
-* \return User_Type: Pointer to the array of character
-*
-*/
-char *rtrim(char *s){
-    char* back = s + strlen(s);
-    while(isspace(*--back));
-    *(back+1) = '\0';
-    return s;
-}
 
 /**
 * \brief Get or scan the value from the console screen
