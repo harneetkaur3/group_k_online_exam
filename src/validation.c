@@ -12,7 +12,7 @@ int generate_Id(char *f_name)
 	char buffer[1024] ;
     char *record,*line;
 	FILE *rqsts;
-	int max=1;
+	int max=0;
 	int i=0;
 	rqsts = fopen(f_name,"r");
 	if(rqsts == NULL){
@@ -37,6 +37,25 @@ int generate_Id(char *f_name)
 		}
 	}
 	return (max+1);
+}
+
+
+
+/**
+* \brief Removes the extra spacing
+*
+* It will delete or trim the extra space in the array of characters by calling this function
+*
+* @param[in] char *s Array of Character Pointer, pointing to the character of size char
+*
+* \return User_Type: Pointer to the array of character
+*
+*/
+char *rtrim(char *s){
+    char* back = s + strlen(s);
+    while(isspace(*--back));
+    *(back+1) = '\0';
+    return s;
 }
 
 
@@ -126,3 +145,4 @@ int valid_phone(char phone[]){
         return 1;
     }
 }
+
