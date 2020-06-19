@@ -20,11 +20,13 @@
 #ifdef WINDOWS
     #include "..\include\user_maintainance.h"
 	#include "..\include\validation.h"
-	 #include "..\include\student.h"
+	#include "..\include\student.h"
+	#include "..\include\professor.h"
 #else
     #include "../include/user_maintainance.h"
 	#include "../include/validation.h"
 	#include "../include/student.h"
+	#include "../include/professor.h"
 #endif
 
 
@@ -111,7 +113,7 @@ int main(int argc, char *argv[]){
 		
 			}
 			else if(strcmp(u_type,"Professor")==0){
-				//code
+				professor(id1);
 			}
 			else{
 				

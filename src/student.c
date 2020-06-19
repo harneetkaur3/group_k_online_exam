@@ -18,7 +18,7 @@ char instructor_id[2000][5];
 /**
 * \brief  int disp_topics() function display the topics
 *
-* Function dipslay all the topics from the topics.txt file and show to the user
+* Function dipslay all the topics from the topics.csv file and show to the user
 *
 *
 * \return Topic: Selected index of topic is returned to the calling function to start the test
@@ -26,24 +26,45 @@ char instructor_id[2000][5];
 */
 int disp_topics(){
 	FILE *all_topics;
-	int ch;
-	if( (all_topics=fopen("topics.txt","r")) == NULL ){
+	int ch,x;
+	char buffer[1024] ;
+    char *record,*line;
+	if( (all_topics=fopen("topics.csv","r")) == NULL ){
 		puts("File can not be opened\n\n");
 		return 0;
 	}
 	else{
-		int i=1;
-		while( !feof(all_topics)){
+		int i=0;
+		while((line=fgets(buffer,sizeof(buffer),all_topics))!=NULL){
+			record = strtok(line,";");
+			
+			while(record != NULL){
+				char *ptr=strtok(record,",");
+				strcpy(t_id[i],ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(t_name[i],ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(instructor_id[i],ptr);
+				if(i!=0){
+					printf("Press %d for %s  \n",i,t_name[i]);
+				}
+				i++;
+				
+				record = strtok(NULL,";");
+			}
+		}
+		
+		/*while( !feof(all_topics)){
 			fscanf(all_topics,"%s %s %s",t_id[i],t_name[i],instructor_id[i]);
 			printf("Press %d for %s  \n",i,t_name[i]);
 			i++;
-		}
-		printf("Press %d for exit  \n",i);
+		}*/
+		printf("Press %d for exit  \n",(i+1));
 		int v=0;
 		do{
 			printf("\nEnter your choice\n");
 			scanf("%d",&ch);
-			if(ch <= 0 || ch > (i)){
+			if(ch <= 0 || ch > (i+1)){
 				printf("Wrong input");
 				v=0;
 			}
@@ -51,7 +72,7 @@ int disp_topics(){
 				v=1;
 			}
 		}while(v!=1);
-		if(ch==i){
+		if(ch==(i+1)){
 			return -1;
 		}
 		else{
@@ -60,6 +81,17 @@ int disp_topics(){
 	}
 	fclose(all_topics);
 }
+
+
+/**
+* \brief  int check_req_status(char *u_id, char *topic) function checks whether a user approved or not 
+*
+* Function open the file of requests.csv 
+*
+*
+* \return Topic: Selected index of topic is returned to the calling function to start the test
+*
+*/
 int check_req_status(char *u_id, char *topic)
 {
 	
@@ -120,14 +152,7 @@ int check_req_status(char *u_id, char *topic)
 	}
 	return 3;
 }
-
-void start_test(char *u_id, char *topic)
-{
-	int x=0;
-	char buffer[1024] ;
-    char *record,*line;
-	int selected_answer;
-	struct questions
+struct questions
 	{
 		char q_id[4];
 		char sub[25];
@@ -139,6 +164,101 @@ void start_test(char *u_id, char *topic)
 		char answer[4];
 		char reslt[5];
 	};
+	
+void submit_test(char *u_id,int x, struct questions rslt[])
+{
+	
+	int i;
+	FILE *result;
+		for(i=0;i<x;i++){
+			//int id=generate_Id("exam_results.csv");
+			//char id1[5];
+			//sprintf(id1,"%d",id);
+			//printf("\n\n\n\n %s  %s  %s  %s   %s  %s  %s  %s  %s", rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
+			result=fopen("exam_results.csv","a");
+			if(result==NULL){
+			printf("Unable to open a file");
+			}
+			else{
+				//printf("%s,%s,%s,%s,%s,%s,%s,%s,%s", rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
+				fprintf(result,"%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", generate_Id("exam_results.csv") ,u_id, rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
+			}
+			fclose(result);
+		}
+		printf("\nYour Exam has been saved... Wait for result\n");
+	
+}
+	
+	
+int modify_answer(char *u_id,int x, struct questions rslt[])
+{
+	int i,q_qid,jk;
+	int selected_answer;
+	printf("\n\n\n hmodify x=%d\n",x);
+	
+	do{
+		printf("\n Enter Question number to modify \n");
+		scanf("%d",&q_qid);
+		q_qid=q_qid-1;
+		
+		if(q_qid>x && q_qid<0)
+		{
+			printf("Wrong question number has chosen");
+			return 0;
+		}
+		else{
+			printf("\nQuestion %s: %s \n",rslt[q_qid].q_id, rslt[q_qid].question); 
+			printf("1. %s", rslt[q_qid].op1);
+			printf("            2. %s\n",rslt[q_qid].op2);
+			printf("3. %s ",rslt[q_qid].op3);
+			printf("            4. %s\n",rslt[q_qid].op4);
+			int o=0;
+			do{
+				printf("\n\nEnter Your New answer between 1 to 4=");
+				scanf("%d", &selected_answer);
+				if(selected_answer >4 || selected_answer < 0)
+				{
+					o=0;
+					printf("Invalid selection");
+				}
+				else
+				{
+					o=1;
+				}
+			}while(o!=1);
+			printf("\nq_i=%d\n",q_qid);
+			sprintf(rslt[q_qid].reslt,"%d",selected_answer);
+		}
+		printf("\nIf you want to modify more questions then press any number (1-9)");
+		printf("\n Otherwise press press 0 to submit your exam\n");
+		scanf("%d",&jk);
+	}while(jk!=0);
+	
+	/*for(i=0;i<x;i++)
+		{
+			printf("\n\n\n\n %s  %s  %s  %s   %s  %s  %s  %s  %s \n", rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
+		}*/
+	if(jk==0)
+	{
+		
+		submit_test(u_id, x, rslt);
+		return 1;
+	}
+	else
+	{
+		return 1;
+	}
+	
+
+}
+
+void start_test(char *u_id, char *topic)
+{
+	int x=0;
+	char buffer[1024] ;
+    char *record,*line;
+	int selected_answer;
+	
 	struct questions qstn[1500];
 	struct questions rslt[100];
 	
@@ -170,15 +290,16 @@ void start_test(char *u_id, char *topic)
 				strcpy(qstn[x].op4,ptr);
 				ptr = strtok(NULL, ",");
 				strcpy(qstn[x].answer,ptr);
-				
+				ptr = strtok(NULL, ",");
+				strcpy(qstn[x].reslt,ptr);
 				x++;
 				
 				record = strtok(NULL,";");
 			}
 			//++i ;
 		}
+		
 		int i=0;
-		//printf("\n%d\n\n",x);
 		int j=0;
 		for(i=0;i<x;i++)
 		{
@@ -190,16 +311,6 @@ void start_test(char *u_id, char *topic)
 				printf("            2. %s\n",rtrim(qstn[i].op2));
 				printf("3. %s ",rtrim(qstn[i].op3));
 				printf("            4. %s\n",rtrim(qstn[i].op4));
-				strcpy(rslt[j].q_id,qstn[i].q_id);
-				strcpy(rslt[j].sub ,qstn[i].sub);
-				strcpy(rslt[j].question,qstn[i].question);
-				strcpy(rslt[j].op1,qstn[i].op1);
-				strcpy(rslt[j].op2,qstn[i].op2);
-				strcpy(rslt[j].op3 ,qstn[i].op3);
-				strcpy(rslt[j].op4 ,qstn[i].op4);
-				strcpy(rslt[j].answer,qstn[i].answer);
-				sprintf(rslt[j].reslt,"%d",selected_answer);
-				j++;
 				int o=0;
 				do{
 					printf("\n\nEnter Your answer between 1 to 4=");
@@ -214,7 +325,58 @@ void start_test(char *u_id, char *topic)
 						o=1;
 					}
 				}while(o!=1);
+				strcpy(rslt[j].q_id,qstn[i].q_id);
+				strcpy(rslt[j].sub ,qstn[i].sub);
+				strcpy(rslt[j].question,qstn[i].question);
+				strcpy(rslt[j].op1,qstn[i].op1);
+				strcpy(rslt[j].op2,qstn[i].op2);
+				strcpy(rslt[j].op3 ,qstn[i].op3);
+				strcpy(rslt[j].op4 ,qstn[i].op4);
+				strcpy(rslt[j].answer,qstn[i].answer);
+				if(selected_answer==1)
+				{
+					strcpy(rslt[j].reslt,"1");
+				}
+				else if(selected_answer==2)
+					{
+					strcpy(rslt[j].reslt,"2");
+				}
+				else if(selected_answer==3)
+					{
+					strcpy(rslt[j].reslt,"3");
+				}
+				else if(selected_answer==4)
+					{
+					strcpy(rslt[j].reslt,"4");
+				}
+				j++;
 			}
+			
+				
+		}
+		int limit=j;
+		/*printf("\n\n\n hererererer%d\n",x);
+		for(i=0;i<j;i++)
+		{
+			//printf("\n\n\n%s %s",rslt[i].reslt,rslt[i].question);
+			printf("\n\n\n\n %s,%s,%s,%s,%s,%s,%s,%s,%s",  rslt[i].q_id,rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
+		}*/
+		
+		printf("\n\n\n\nYou have done your exam.\n\n\n\n");
+		printf("\n\n\n\nPress 1 to modify your questions\n\n\n\n");
+		printf("\n\n\n\nPress 2 to submit your exam\n\n\n\n");
+		printf("Enter your choice");
+		int chhh=0;
+		scanf("%d",&chhh);
+		if(chhh==1){
+			int j;
+			do{
+				j=modify_answer(u_id,limit,rslt);
+			}while(j==0);
+		}
+		else if(chhh==2){
+			submit_test(u_id,limit,rslt);
+			
 		}
 		
 	}
@@ -232,7 +394,7 @@ char* raiseTestRequest(char *u_id, int topic){
     	exit(EXIT_FAILURE);
     }
 	else{
-		fprintf(rqsts,"%d,%s,%s,%s,%s\n",request_id,u_id,t_name[topic],instructor_id[topic],"0");
+		fprintf(rqsts,"%d,%s,%s,%s,%s",request_id,u_id,t_name[topic],instructor_id[topic],"0");
 		printf("request raised");
 		
 	}

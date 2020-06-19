@@ -1,0 +1,1 @@
+int professor(char *);
