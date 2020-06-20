@@ -30,6 +30,22 @@ int generate_Id(char *f_name)
 				}
 				ptr = strtok(NULL, ",");
 				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
 				record = strtok(NULL,";");
 			}
 			++i; 
