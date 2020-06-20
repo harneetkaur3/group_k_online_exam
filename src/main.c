@@ -22,11 +22,15 @@
 	#include "..\include\validation.h"
 	#include "..\include\student.h"
 	#include "..\include\professor.h"
+	#include "..\include\profile_creation.h"
+	#include "..\include\exam.h"
 #else
     #include "../include/user_maintainance.h"
 	#include "../include/validation.h"
 	#include "../include/student.h"
 	#include "../include/professor.h"
+	#include "../include/profile_creation.h"
+	#include "../include/exam.h"
 #endif
 
 
@@ -77,6 +81,8 @@ int main(int argc, char *argv[]){
 
     printf("                Press 1 LOGIN\n");
     printf("                Press 2 EXIT\n");
+	printf("                Press 3 Create a New Profile\n");
+	printf("                Press 4 Create / Modify Exam\n");
 	fgets(ch,range,stdin);
 	switch(atoi(ch)){
 		case 1:
@@ -122,6 +128,48 @@ int main(int argc, char *argv[]){
 			break;
 		case 2:
 			printf("Thank you Exit\n");
+			break;
+		case 3:
+			printf("Press 1 to create student profile \n");
+			printf("Press 2 to create Professor profile \n");
+			int chh, ch;
+			char student_id[100];
+			scanf("%d",&chh);
+			if(chh==1){
+
+				printf("\n ** Student Access Page **\n\n");
+					printf("1.Create New Account\n2. Modify Account\n\nEnter your choice (1-3) : ");
+					scanf("%d",&ch);
+
+					if (ch==1) create_student_profile(NULL);
+					else
+					{
+					 printf("\n Enter Student Identification Number\n");
+					 scanf("%s",student_id);
+					 create_student_profile(student_id);
+					}
+
+			}
+			else if(chh==2){
+				//create_prof_profile();
+			}
+			else{
+				printf("Wrong Input");
+			}
+			break;
+		case 4:
+			printf("Press 1 to create New Exam \n");
+			printf("Press 2 to Modify Exam \n");
+			int choice=0;
+			scanf("%d",&choice);
+			if (choice == 1)
+			{
+				create_New_Exam();
+			}
+			else
+			{
+				edit_exam();
+			}
 			break;
 		default:
 			 printf("Have a Good Day!");

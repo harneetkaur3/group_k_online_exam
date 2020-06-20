@@ -10,6 +10,8 @@ Main: src/main.c
 	
 	gcc -g -O -c src/professor.c -fPIC -DPIC -o obj/professor.o
 	
-	gcc -o bin/Main obj/main.o obj/user_maintainance.o obj/validation.o obj/student.o obj/professor.o
+	gcc -g -O -c src/exam.c -fPIC -DPIC -o obj/exam.o
+	
+	gcc -o bin/Main obj/main.o obj/user_maintainance.o obj/validation.o obj/student.o obj/professor.o obj/exam.o
 
 	./bin/Main
