@@ -14,7 +14,6 @@
 char t_id[2000][5];
 char t_name[2000][20];
 char instructor_id[2000][5];
-char temp[200][5];
 
 /**
 * \brief  int disp_topics() function display the topics
@@ -50,8 +49,7 @@ int disp_topics(){
 					printf("Press %d for %s  \n",i,t_name[i]);
 				}
 				i++;
-				ptr = strtok(NULL, ",");
-				strcpy(temp[i],ptr);
+				
 				record = strtok(NULL,";");
 			}
 		}
@@ -396,8 +394,7 @@ char* raiseTestRequest(char *u_id, int topic){
     	exit(EXIT_FAILURE);
     }
 	else{
-		//strcpy(temp,"0");
-		fprintf(rqsts,"%d,%s,%s,%s,%s",request_id,u_id,t_name[topic],rtrim(instructor_id[topic]),temp[topic]);
+		fprintf(rqsts,"%d,%s,%s,%s,%s",request_id,u_id,t_name[topic],instructor_id[topic],"0");
 		printf("request raised");
 		
 	}
@@ -449,7 +446,6 @@ int student(char *u_id){
 				int tp, topic;
 				topic=disp_topics();
 				if(topic>0){
-					
 					printf("\n\n\n\nYou have selected %s %s %s",t_id[topic],t_name[topic],instructor_id[topic]);
 					raiseTestRequest(u_id,topic);
 				}

@@ -6,10 +6,8 @@
 
 #ifdef WINDOWS
     #include "..\include\validation.h"
-	#include "..\include\user_maintainance.h"
 #else
     #include "../include/validation.h"
-	#include "../include/user_maintainance.h"
 #endif
 
 int professor(char *u_id){
@@ -20,8 +18,7 @@ int professor(char *u_id){
 		printf("                Press 3 Add a Question\n");
 		printf("                Press 4 Update a question\n");
 		printf("                Press 5 Approve student request\n");
-		printf("                Press 6 change password ...........\n");
-		printf("                Press 7 to Log Out!!\n");
+		printf("                Press 6 to Log Out!!\n");
 		scanf("%d",&chh);
 		switch(chh){
 			case 1:{
@@ -48,23 +45,6 @@ int professor(char *u_id){
 				break;
 			}
 			case 6:{
-				char pwd[15];
-				char id1[11];
-			    char new_pwd[15];
-			    printf("\nEnter your old password:");
-			 	scanf("%s",pwd);
-				//getchar();
-			    printf("\nEnter your new password:");
-			 	scanf("%s",new_pwd);
-			    stpcpy(pwd,rtrim(pwd));
-			    stpcpy(new_pwd,rtrim(new_pwd));
-
-				char user_status[60];
-				strcpy(user_status,changePassword(u_id,pwd,new_pwd));
-    			puts(user_status);
-				break;
-			}
-			case 7:{
 				printf("\n Thank you! Have Good Day....");
 				return 1;
 			}
@@ -73,5 +53,5 @@ int professor(char *u_id){
 				break;
 			}
 		}
-	}while(chh!=7);
+	}while(chh!=6);
 }
