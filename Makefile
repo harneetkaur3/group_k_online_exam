@@ -1,5 +1,7 @@
 Main: src/main.c
 
+	gcc -o bin/Main obj/main.o obj/user_maintainance.o obj/validation.o obj/student.o obj/professor.o
+
 	gcc -g -O -c src/main.c -fPIC -DPIC -o obj/main.o
 	
 	gcc -g -O -c src/user_maintainance.c -fPIC -DPIC -o obj/user_maintainance.o
