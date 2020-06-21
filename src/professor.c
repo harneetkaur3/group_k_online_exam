@@ -14,6 +14,17 @@
 
 
 
+#ifdef WINDOWS
+    #include "..\include\validation.h"
+	#include "..\include\profile_creation.h"
+#else
+    #include "../include/validation.h"
+	#include "../include/profile_creation.h"
+#endif
+
+
+
+
 #define range 30
 #define length 100
 #define QUESTIONs "QUESTION: "
@@ -726,6 +737,165 @@ int show_exam_results(){
 	
 	
 	return 0;
+}
+
+
+void add_question(char* exam, char *u_id){
+	struct QUESTION* q = malloc(sizeof(struct QUESTION*));
+
+
+	q->id=generate_Id("questions.csv");
+	//printf("%d",id);
+	char *topic3=disp_topics1(u_id);
+	printf("%s",topic3);
+	int x=0;
+	getchar();
+	do{
+		printf("\nEnter the question: ");
+		gets(q->question);
+		x=notempty(q->question);
+	}while(x==0);
+	
+	//fputs(QUESTIONs, fPtr);
+	//fputs(q->question, fPtr);
+
+	char op1[30];
+	do{
+		printf("\nEnter the first option - A. ");
+		gets(op1);
+		x=notempty(op1);
+	}while(x==0);
+	//fgets(q->option1, length, stdin);
+	//fputs(O1, fPtr);
+	//fputs(q->option1, fPtr);
+	char op2[30];
+	do{
+		printf("\nEnter the second option - B. ");
+		gets(op2);
+		x=notempty(op2);
+	}while(x==0);
+	do{
+		printf("\nEnter the third option - C. ");
+		gets(q->option3);
+		x=notempty(q->option3);
+	}while(x==0);
+	do{
+		printf("\nEnter the fourth option - D. ");
+		gets(q->option4);
+		x=notempty(q->option4);
+	}while(x==0);
+	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
+	scanf("%s",q->ans);
+		
+	
+	FILE *qtn;
+	qtn = fopen("questions.csv","a");
+	if(qtn==NULL){
+		printf("Exam cannot be found \n");
+		exit(EXIT_FAILURE);
+	}
+	else{
+		//printf("%d,%s,%s,%s,%s,%s,%s,%s,%s",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
+		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
+		printf("\nQuestion added successfully \n" );
+		fclose(qtn);
+	}
+} 
+
+
+
+void create_prof_profile()
+{
+	char id[13];
+	char f_name[50];
+	char l_name[50];
+	char age[5];
+	char address1[45];
+	char address2[45];
+	char phonenumber[20];
+	char gender[10];
+	char email[100];
+	char dept[100];
+	char uni[100];
+	int x=0;
+    char ch;
+    int num;
+    getchar();
+    int id1=generate_Id("user_Profile.csv");
+	sprintf(id,"%d",id1);
+    do{
+        printf("Enter the first name of Professor\n");
+        gets(f_name);
+        x=notempty(f_name);
+    }while(x==0);
+    x=0;
+    do{
+        printf("Enter the Last name of Professor\n");
+        gets(l_name);
+        x=notempty(l_name);
+    }while(x==0);
+    x=0;
+    printf("Enter the age of Professor\n");
+    scanf("%s",age);
+    getchar();
+    do{
+        printf("Enter house/apartment number and street\n");
+        gets(address1);
+        x=notempty(address1);
+    }while(x==0);
+    x=0;
+    do{
+        printf("\nEnter city and country\n");
+        gets(address2);
+        x=notempty(address2);
+    }while(x==0);
+    x=0;
+    do{
+        printf("Enter Phone number\n");
+        scanf("%s",phonenumber);
+        x=valid_phone(phonenumber);
+    } while(x==0);
+    x=0;
+    do{
+        printf("\nEnter gender Male , Female or Others\n");
+        scanf("%s",gender);
+        if (strcasecmp(gender,"Male")==0 || strcasecmp(gender,"Female")==0 || strcasecmp(gender,"Female")==0){
+            x=1;
+            break;
+        }
+    } while(x==0);
+    x=0;
+    do{
+        printf("Enter email\n");
+        scanf("%s",email);
+        x=valid_email(email);
+    }while(x==0);
+    x=0;
+    do{
+        printf("Enter the department of Professor\n");
+        gets(dept);
+        x=notempty(dept);
+    }while(x==0);
+    x=0;
+
+    do{
+        printf("Enter the designation of Professor\n");
+        gets(uni);
+        x=notempty(uni);
+    }while(x==0); 
+	FILE * fPtr = fopen("user_profiles.csv","a"); 
+   
+	
+    if(fPtr == NULL)
+    {
+    	printf("unable to create file. \n");
+    	exit(EXIT_FAILURE);
+    } 
+	else{
+		fprintf(fPtr,"%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s \n",id,f_name,l_name,age,address1,address2,phonenumber,gender,email,dept,uni,"Professor");
+		printf("\nAccount created and saved successfully \n" );
+	}
+	fclose(fPtr);
 }
 
 
