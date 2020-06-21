@@ -123,7 +123,7 @@ void add_question(char* exam){
 	}
 	
 
-	fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,q->option1,q->option2,q->option3,q->option4,q->ans,"0");
+	fprintf(fPtr,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,q->option1,q->option2,q->option3,q->option4,q->ans,"0");
 	
 	fclose(fPtr);
    	
