@@ -6,7 +6,7 @@
 
 #ifdef WINDOWS
     #include "..\include\validation.h"
-	#include "..\include\user_maintainance.h
+	#include "..\include\user_maintainance.h"
 #else
     #include "../include/validation.h"
 	#include "../include/user_maintainance.h"
