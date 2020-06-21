@@ -80,11 +80,11 @@ void add_question(char* exam){
 	
     fPtr = fopen(""questions.csv","a"); 
     
-    //if(fPtr == NULL)
-    //{
-    //	printf("Exam cannot be found \n");
-    //	exit(EXIT_FAILURE);
-    //} 
+    if(fPtr == NULL)
+    {
+    	printf("Exam cannot be found \n");
+    	exit(EXIT_FAILURE);
+    } 
 	getchar();	
 	do{
 	printf("\nEnter the question: ");
