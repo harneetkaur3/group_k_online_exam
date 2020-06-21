@@ -14,4 +14,6 @@ Main: src/main.c
 	
 	gcc -g -O -c src/exam.c -fPIC -DPIC -o obj/exam.o
 	
-	gcc -o bin/Main obj/main.o obj/user_maintainance.o obj/validation.o obj/student.o obj/professor.o obj/exam.o obj/profile_creation.o
+	gcc -o bin/Main obj/main.o obj/user_maintainance.o obj/validation.o obj/student.o obj/professor.o obj/profile_creation.o obj/exam.o
+
+	./bin/Main

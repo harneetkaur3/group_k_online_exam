@@ -12,6 +12,507 @@
 	#include "../include/user_maintainance.h"
 #endif
 
+
+
+#define range 30
+#define length 100
+#define QUESTIONs "QUESTION: "
+#define O1 "A. "
+#define O2 "B. "
+#define O3 "C. "
+#define O4 "D. "
+#define ANSWER "ANSWER: "
+#define separator "\n------------------------------- \n"
+#define NUMBER_QUESTION 30
+
+
+/**
+* \brief  int disp_topics() function display the topics
+*
+* Function dipslay all the topics from the topics.csv file and show to the user
+*
+*
+* \return Topic: Selected index of topic is returned to the calling function to start the test
+*
+*/
+char* disp_topics1(char *prof_id){
+	
+	
+	char t_id[2000][5];
+	char t_name[2000][20];
+	char instructor_id[2000][5];
+	char temp[200][5];
+	FILE *all_topics;
+	int ch,x;
+	char buffer[1024] ;
+    char *record,*line;
+	if( (all_topics=fopen("topics.csv","r")) == NULL ){
+		puts("File can not be opened\n\n");
+		return "error";
+	}
+	else{
+		int i=0;
+		while((line=fgets(buffer,sizeof(buffer),all_topics))!=NULL){
+			record = strtok(line,";");
+			
+			while(record != NULL){
+				char *ptr=strtok(record,",");
+				strcpy(t_id[i],ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(t_name[i],ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(instructor_id[i],ptr);
+				if(strcmp(instructor_id[i],prof_id)==0){
+					printf("Press %d for %s  \n",i,t_name[i]);
+				}
+				i++;
+				ptr = strtok(NULL, ",");
+				strcpy(temp[i],ptr);
+				record = strtok(NULL,";");
+			}
+		}
+		
+		/*while( !feof(all_topics)){
+			fscanf(all_topics,"%s %s %s",t_id[i],t_name[i],instructor_id[i]);
+			printf("Press %d for %s  \n",i,t_name[i]);
+			i++;
+		}*/
+		printf("Press %d for exit  \n",(i+1));
+		int v=0;
+		do{
+			printf("\nEnter your choice\n");
+			scanf("%d",&ch);
+			if(ch <= 0 || ch > (i+1)){
+				printf("Wrong input");
+				v=0;
+			}
+			else{
+				v=1;
+			}
+		}while(v!=1);
+		char *topic3=t_name[ch];
+		return topic3;
+	}
+	fclose(all_topics);
+}
+
+
+
+
+
+struct QUESTION{
+	int id;
+	char question[length];
+	char option1[30];
+	char option2[length];
+	char option3[length];
+	char option4[length];
+	char ans[2];
+};
+
+
+
+
+
+
+
+struct request{
+    char requestid[10]; 
+    char studentid[10];
+	char topic[20];
+	char professorid[20];
+    char allow[5];
+};
+struct questions
+	{
+		char q_id[4];
+		char sub[25];
+		char question[150];
+		char op1[30];
+		char op2[30];
+		char op3[30];
+		char op4[30];
+		char answer[4];
+		char reslt[5];
+	};
+
+
+
+
+
+void update_questions(int x, struct questions pf[]) {
+    //puts("inthis method");
+     //getchar();
+	FILE *u_profile;
+	u_profile=fopen("questions.csv","w");
+	int i;
+	
+	
+	for(i=0;i<x;i++)
+	{
+		if(u_profile==NULL){
+			printf("Unable to create a file");
+		}
+		else{
+			
+			fprintf(u_profile,"%s,%s,%s,%s,%s,%s,%s,%s,%s \n",pf[i].q_id,pf[i].sub,pf[i].question,pf[i].op1,pf[i].op2,pf[i].op3,pf[i].op4,pf[i].answer,"0");
+		}
+			
+	}
+	fclose(u_profile);
+	puts("updated successfully");
+    getchar();
+}
+
+
+// Edit question
+
+
+void editQuestion(char *topic){
+// puts(queid);
+  puts(topic);
+ 	char questionid[10];
+	printf("Enter the question id: ");
+	scanf("%s",questionid);
+   	//fgets(questionid, 5, stdin);
+       
+puts(questionid);
+    
+   /// struct questions q ;
+  ///  = malloc(sizeof(struct questions*));	
+	char question[120];
+	
+	int x=0;
+	getchar();
+	do{
+		printf("Enter the question: ");
+		gets(question);
+		x=notempty(question);
+	}while(x==0);
+	
+	
+	
+	char op1[30];
+	do{
+		printf("\nEnter the first option - A. ");
+		gets(op1);
+		x=notempty(op1);
+	}while(x==0);
+	//fgets(q->option1, length, stdin);
+	//fputs(O1, fPtr);
+	//fputs(q->option1, fPtr);
+	char op2[30];
+	do{
+		printf("\nEnter the second option - B. ");
+		gets(op2);
+		x=notempty(op2);
+	}while(x==0);
+	char op3[30];
+	do{
+		printf("\nEnter the third option - C. ");
+		gets(op3);
+		x=notempty(op3);
+	}while(x==0);
+	char op4[30];
+	do{
+		printf("\nEnter the fourth option - D. ");
+		gets(op4);
+		x=notempty(op4);
+	}while(x==0);
+	char answer[10];
+	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
+	scanf("%s",answer);
+	
+	
+   	/*//fgets(question, 100, stdin);
+      // stpcpy(question,rtrim(question));
+//puts(question);
+	char op1[30];
+	printf("Enter the first option - A. ");
+   	fgets(op1, 30, stdin);	
+       stpcpy(op1,rtrim(op1));
+//puts(op1);
+	char op2[30];
+	printf("Enter the second option - B. ");
+   	fgets(op2, 30, stdin);
+        stpcpy(op2,rtrim(op2));
+//puts(op2);
+	char op3[30];
+	printf("Enter the third option - C. ");
+   	fgets(op3, 30, stdin);
+        stpcpy(op3,rtrim(op3));
+//puts(op3);
+	char op4[30];
+	printf("Enter the fourth option - D. ");
+   	fgets(op4, 30, stdin);
+        stpcpy(op4,rtrim(op4));
+//puts(op4);
+	char answer[10];	
+	printf("Enter the correct answer (1, 2, 3 or 4): ");
+	fgets(answer, 10, stdin);
+     stpcpy(answer,rtrim(answer));*/
+//puts(answer);	
+	/*while(strlen(answer) != 1){ 
+		printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
+		fgets(answer,10, stdin);
+        stpcpy(answer,rtrim(answer));
+	}*/
+  ///// finding total rows of the file
+  x=0;
+	struct questions pf[150];
+	char buffer[1024] ;
+    char *record,*line;
+	FILE *fstream = fopen("questions.csv","r");
+    if(fstream == NULL)  {
+        printf("\n file opening failed ");
+
+    }
+	else{
+		
+		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
+			record = strtok(line,";");
+			while(record != NULL){
+
+				char *ptr=strtok(record,",");
+				strcpy(pf[x].q_id,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].sub,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].question,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op1,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op2,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op3,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op4,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].answer,ptr);
+				ptr = strtok(NULL, ",");						
+				x++;				
+				record = strtok(NULL,";");
+                //printf("%d",x);
+			}
+		
+		}
+		///printf("\n\n\n%d\n\n\n\n",x);
+		
+	}
+	fclose(fstream);
+///// updating the edit file
+///puts("checking no of lines in file");
+//getchar();
+     int i;
+	 
+	for(i=0;i<x;i++){
+		 printf("\n%s=====%s\n",questionid,pf[i].q_id);
+        //  puts(questionid);
+        //       printf("Length of questionid string is: %d\n", strlen(questionid));
+        //     puts(pf[i].q_id);
+        //      printf("Length of qid string is: %d\n", strlen(pf[i].q_id));
+        //     puts(topic);
+        //     printf("Length of topic string is: %d\n", strlen(topic));
+        //     puts(pf[i].sub);
+        //        printf("Length of string is: %d\n", strlen(pf[i].sub));
+      //  if((strcmp(questionid,pf[i].q_id)==0))  {
+		   
+            if( (strcmp(questionid,pf[i].q_id)==0) && (strcmp(topic,pf[i].sub) ==0)){
+               printf("hello");
+            stpcpy(pf[i].question,question);
+            stpcpy(pf[i].op1,op1);
+            stpcpy(pf[i].op2,op2);
+            stpcpy(pf[i].op3,op3);
+            stpcpy(pf[i].op4,op4);
+            stpcpy(pf[i].answer,answer);
+            //strcat(pf[i].answer,"\n");
+                        //printf("%d\n",i); 
+
+          update_questions(x,pf);
+       
+        
+        }
+    }
+ //getchar();
+}
+
+//End edit question
+
+
+// deleting a questions
+
+ void deleteQuestion(char *topic,char *quid){
+
+   //// finding total rows of the column
+    int x=0;
+	struct questions pf[150];
+	char buffer[1024] ;
+    char *record,*line;
+	FILE *fstream = fopen("questions.csv","r");
+    if(fstream == NULL)  {
+        printf("\n file opening failed ");
+
+    }
+	else{
+		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
+			record = strtok(line,";");
+			while(record != NULL){
+
+				char *ptr=strtok(record,",");
+				strcpy(pf[x].q_id,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].sub,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].question,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op1,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op2,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op3,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].op4,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].answer,ptr);
+				ptr = strtok(NULL, ",");						
+				x++;				
+				record = strtok(NULL,";");
+			}
+			//++i ;
+		}
+		//printf("\n\n\n%d\n\n\n\n",x);
+		//while(
+	}
+	fclose(fstream);
+        ////
+
+   FILE *u_profile;
+	u_profile=fopen("questions.csv","w");
+    int i;
+       
+	for(i=0;i<x;i++){
+         if(u_profile==NULL){
+			printf("Unable to create a file");
+		}
+       else if( (strcmp(quid,pf[i].q_id)==0) && (strcmp(topic,pf[i].sub) ==0)){
+            
+           // update_questions(x,pf);
+        }
+        else{				
+			fprintf(u_profile,"%s,%s,%s,%s,%s,%s,%s,%s,%s\n",pf[i].q_id,pf[i].sub,pf[i].question,pf[i].op1,pf[i].op2,pf[i].op3,pf[i].op4,pf[i].answer,"0");
+		}
+			
+	}
+	fclose(u_profile);
+    puts("deeleted successfully");
+    getchar();  		
+ }
+
+//end of deleting question function
+// Allow student
+
+void allowstudent(char *professorid){
+	
+   // puts(professorid);
+    //puts("in thsi func");
+     int x=0;
+	struct request pf[150];
+	char buffer[1024] ;
+    char *record,*line;
+	FILE *fstream = fopen("requests.csv","r");
+    if(fstream == NULL)  {
+        printf("\n file opening failed ");
+
+    }
+	else{
+		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
+			record = strtok(line,";");
+			while(record != NULL){
+
+				char *ptr=strtok(record,",");
+                strcpy(pf[x].requestid,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].studentid,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].topic,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].professorid,ptr);
+                ptr = strtok(NULL, ",");
+				strcpy(pf[x].allow,ptr);
+				ptr = strtok(NULL, ",");						
+				x++;				
+				record = strtok(NULL,";");
+                //printf("%d",x);
+			}
+		
+		}
+		///printf("\n\n\n%d\n\n\n\n",x);
+		
+	}
+	fclose(fstream);
+    //puts(professorid);
+    int i;
+	
+	printf("\nPending Requests");
+	printf("\n============================================================================\n");
+	printf("\nPending Requests");
+	printf("\nS ID===Stu_ID====Topic======Pending request=================\n");
+	for(i=0;i<x;i++){
+		if( ((strcmp(professorid,rtrim(pf[i].professorid)))==0) && ((strcmp("0",rtrim(pf[i].allow))) ==0)){
+			
+			printf("\n%s    %s     %s   %s ", pf[i].requestid,pf[i].studentid ,pf[i].topic ,pf[i].allow);
+		}
+	}
+	/*for(i=0;i<x;i++){
+       // puts(professorid);
+        puts(pf[i].professorid);
+        puts(pf[i].allow);
+       // puts("professorid");
+       
+            if( (strcmp(professorid,pf[i].professorid)==0) && (strcmp("0",pf[i].allow) ==0)){               
+                    stpcpy(pf[i].allow,"1");           
+                    strcat(pf[i].allow,"\n");                     
+                    //update_questions(x,pf);
+                    printf("\n\n\n%d\n\n\n\n",i);
+
+       
+        
+        }
+    }*/
+	int r_ch;
+	printf("\nEnter the serial ID to approve the request\n");
+	scanf("%d",&r_ch);
+	strcpy(pf[r_ch].allow,"1");
+	
+    FILE *u_profile;
+	u_profile=fopen("requests.csv","w");
+	int j;
+	for(j=0;j<x;j++)
+	{
+		printf("hello");
+		if(u_profile==NULL){
+			printf("Unable to create a file");
+		}
+		else{
+			printf("hello");
+			fprintf(u_profile,"%s,%s,%s,%s,%s\n",pf[j].requestid,pf[j].studentid,pf[j].topic,pf[j].professorid,pf[j].allow);
+		}
+			
+	}
+	fclose(u_profile);
+	puts("student allowed successfully");
+   getchar();
+
+    
+
+}
+
+// end Allow student
+
+
+
+
+
 int professor(char *u_id){
 	int chh;
 	do{
@@ -19,9 +520,11 @@ int professor(char *u_id){
 		printf("                Press 2 Add new Topic\n");
 		printf("                Press 3 Add a Question\n");
 		printf("                Press 4 Update a question\n");
-		printf("                Press 5 Approve student request\n");
-		printf("                Press 6 change password ...........\n");
-		printf("                Press 7 to Log Out!!\n");
+		printf("                Press 5 Delete a question\n");
+		printf("                Press 6 Approve student request\n");
+		printf("                Press 7 Generate Result\n");
+		printf("                Press 8 change password ...........\n");
+		printf("                Press 9 to Log Out!!\n");
 		scanf("%d",&chh);
 		switch(chh){
 			case 1:{
@@ -35,19 +538,34 @@ int professor(char *u_id){
 				break;
 			}
 			case 3:{
-				
+				 
 				break;
 			}
 			case 4:{
-				
-				
+				char *topic3=disp_topics1(u_id);
+				editQuestion(topic3);
 				break;
 			}
 			case 5:{
-				
+				char *topic3=disp_topics1(u_id);
+				char qqid[5];
+				printf("\n Enter question id to delete");
+				scanf("%s",qqid);
+				deleteQuestion(topic3,qqid);
 				break;
 			}
 			case 6:{
+				//printf("hello");
+				allowstudent(u_id);
+				break;
+			}
+			case 7:{
+				
+				//printf("hello");
+				//allowstudent(u_id);
+				break;
+			}
+			case 8:{
 				char pwd[15];
 				char id1[11];
 			    char new_pwd[15];
@@ -64,7 +582,7 @@ int professor(char *u_id){
     			puts(user_status);
 				break;
 			}
-			case 7:{
+			case 9:{
 				printf("\n Thank you! Have Good Day....");
 				return 1;
 			}
@@ -73,8 +591,13 @@ int professor(char *u_id){
 				break;
 			}
 		}
+
+=======
 	}while(chh!=7);
+
 }
+
+
 
 
 
@@ -204,6 +727,7 @@ int show_exam_results(){
 	
 	return 0;
 }
+
 
 
 

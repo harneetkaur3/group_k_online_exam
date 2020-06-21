@@ -9,6 +9,7 @@
 
 int generate_Id(char *f_name)
 {
+	//printf("%s",f_name);
 	char buffer[1024] ;
     char *record,*line;
 	FILE *rqsts;
@@ -51,6 +52,7 @@ int generate_Id(char *f_name)
 			++i; 
 			
 		}
+		fclose(rqsts);
 	}
 	return (max+1);
 }

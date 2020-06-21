@@ -16,9 +16,6 @@
 
 
 
-
-
-
 struct user{
     char username[10];
 	char password[10];
@@ -464,3 +461,7 @@ char* editProfile(char *u_id){
 	}
 		
 }
+
+
+
+

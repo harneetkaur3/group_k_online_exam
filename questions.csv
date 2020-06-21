@@ -1,6 +1,5 @@
-0,subject,question,op1 ,op2,op3,op4,answer,dummy
+0,subject,question,op1 ,op2,op3,op4,answer,0
 1,C,What is C?,alphabet,Programming language,language,No language,1,0
-2,C,Which is the jump statement?,If,Abc,xyz,FF,1,0
 3,C,Which is not a looping statement?,for,while,dowhile,switch,4,0
 4,C,Which is not an operator?,=,+,op,*,3,0
 5,Java,Why java,aa,sfd,sdf,sf,1,0

@@ -173,17 +173,18 @@ void submit_test(char *u_id,int x, struct questions rslt[])
 	int i;
 	FILE *result;
 		for(i=0;i<x;i++){
-			//int id=generate_Id("exam_results.csv");
-			//char id1[5];
-			//sprintf(id1,"%d",id);
 			//printf("\n\n\n\n %s  %s  %s  %s   %s  %s  %s  %s  %s", rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
-			result=fopen("exam_results.csv","a");
+			result=fopen("result.csv","a");
 			if(result==NULL){
 			printf("Unable to open a file");
 			}
 			else{
+				int id=generate_Id("result.csv");
+				char id1[5];
+				sprintf(id1,"%d",id);
+			
 				//printf("%s,%s,%s,%s,%s,%s,%s,%s,%s", rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
-				fprintf(result,"%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", generate_Id("exam_results.csv") ,u_id, rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
+				fprintf(result,"%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", id1 ,u_id, rslt[i].q_id, rslt[i].sub, rslt[i].question, rslt[i].op1, rslt[i].op2, rslt[i].op3, rslt[i].op4, rslt[i].answer, rslt[i].reslt);
 			}
 			fclose(result);
 		}
@@ -413,7 +414,8 @@ int student(char *u_id){
 		printf("                Press 3 ________________\n");
 		printf("                Press 4 Start test\n");
 		printf("                Press 5 Raise a test request\n");
-		printf("                Press 6 to Log Out!!\n");
+		printf("                Press 6 Change password\n");
+		printf("                Press 7 to Log Out!!\n");
 		scanf("%d",&chh);
 		switch(chh){
 			case 1:{
@@ -457,6 +459,23 @@ int student(char *u_id){
 				break;
 			}
 			case 6:{
+				char pwd[15];
+				char id1[11];
+			    char new_pwd[15];
+			    printf("\nEnter your old password:");
+			 	scanf("%s",pwd);
+				//getchar();
+			    printf("\nEnter your new password:");
+			 	scanf("%s",new_pwd);
+			    stpcpy(pwd,rtrim(pwd));
+			    stpcpy(new_pwd,rtrim(new_pwd));
+
+				char user_status[60];
+				strcpy(user_status,changePassword(u_id,pwd,new_pwd));
+    			puts(user_status);
+				break;
+			}
+			case 7:{
 				printf("\n Thank you! Have Good Day....");
 				return 1;
 			}
@@ -465,6 +484,6 @@ int student(char *u_id){
 				break;
 			}
 		}
-	}while(chh!=6);
+	}while(chh!=7);
 }
 

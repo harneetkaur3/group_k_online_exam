@@ -1,1 +1,2 @@
-void create_student_account(char *student_identification);
+void create_student_account(char *);
+void create_prof_profile();

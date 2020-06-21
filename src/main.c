@@ -22,11 +22,13 @@
 	#include "..\include\validation.h"
 	#include "..\include\student.h"
 	#include "..\include\professor.h"
+	#include "..\include\profile_creation.h"
 #else
     #include "../include/user_maintainance.h"
 	#include "../include/validation.h"
 	#include "../include/student.h"
 	#include "../include/professor.h"
+	#include "../include/profile_creation.h"
 #endif
 
 
@@ -79,6 +81,7 @@ int main(int argc, char *argv[]){
     printf("                Press 2 CREATE A PROFESSOR ACCOUNT\n");
     printf("                Press 3 CREATE A STUDENT ACCOUNT\n");
     printf("                Press 2 EXIT\n");
+	printf("                Press 3 Create a New Profile\n");
 	fgets(ch,range,stdin);
 	switch(atoi(ch)){
 		case 1:
@@ -130,6 +133,22 @@ int main(int argc, char *argv[]){
 		case 4:
 			printf("Thank you Exit\n");
 			break;
+		case 3:
+			printf("Press 1 to create student profile \n");
+			printf("Press 2 to create Professor profile \n");
+			int chh;
+			scanf("%d",&chh);
+			if(chh==1){
+				create_student_account(NULL);
+			}
+			else if(chh==2){
+				//create_prof_profile();
+			}
+			else{
+				printf("Wrong Input");
+			}
+			break;
+		
 		default:
 			 printf("Have a Good Day!");
 	}
