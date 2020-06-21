@@ -180,6 +180,32 @@ struct question1
 }
 
 
+int show_exam_results(){
+
+	char s;
+	
+	FILE * fPtr;
+   	
+    fPtr = fopen("final_result.csv","r"); 
+    
+    if(fPtr == NULL)
+    {
+    	printf("Unable to read results. \n");
+    	exit(EXIT_FAILURE);
+    } 	
+	
+	while((s=fgetc(fPtr))!= EOF) {
+      printf("%c",s);
+	}
+	
+	
+	fclose(fPtr);
+	
+	
+	return 0;
+}
+
+
 
 
 
