@@ -71,56 +71,59 @@ char* login(char *u_id, char *pwd){
 
 void add_question(char* exam){
 	struct QUESTION* q = malloc(sizeof(struct QUESTION*));
-	
+	q->id=generate_Id("questions.csv");
 	FILE * fPtr;
-   	
-    fPtr = fopen("exam","a"); 
+   	char *topic3=disp_topics1(u_id);
+	printf("%s",topic3);
+	int x=0;
+	
+	
+    fPtr = fopen(""questions.csv","a"); 
     
-    if(fPtr == NULL)
-    {
-    	printf("Exam cannot be found \n");
-    	exit(EXIT_FAILURE);
-    } 	
-	
+    //if(fPtr == NULL)
+    //{
+    //	printf("Exam cannot be found \n");
+    //	exit(EXIT_FAILURE);
+    //} 
+	getchar();	
+	do{
 	printf("\nEnter the question: ");
-   	fgets(q->question, length, stdin);
-	fputs(QUESTIONs, fPtr);
-   	fputs(q->question, fPtr);
+   	gets(q->question);
+	x=notempty(q->question);
+	}while(x==0);
+
+	do{
+	printf("\nEnter the first option - 1. ");
+   	gets(q->option1);
+	x=notempty(q->option1);
+	} while (x==0);
 	
-	printf("\nEnter the first option - A. ");
-   	fgets(q->option1, length, stdin);
-	fputs(O1, fPtr);
-   	fputs(q->option1, fPtr);
+	do{
+	printf("\nEnter the second option - 2. ");
+   	gets(q->option2);
+	x=notempty(q->option2);
+	} while (x==0);
 	
-	printf("\nEnter the second option - B. ");
-   	fgets(q->option2, length, stdin);
-	fputs(O2, fPtr);
-   	fputs(q->option2, fPtr);
+	do{
+	printf("\nEnter the third option - 3. ");
+   	gets(q->option3);
+	x=notempty(q->option3);
+	} while (x==0);
 	
-	printf("\nEnter the third option - C. ");
-   	fgets(q->option3, length, stdin);
-	fputs(O3, fPtr);
-   	fputs(q->option3, fPtr);
-	
-	printf("\nEnter the fourth option - D. ");
-   	fgets(q->option4, length, stdin);
-	fputs(O4, fPtr);
-   	fputs(q->option4, fPtr);
+	do{
+	printf("\nEnter the fourth option - 4. ");
+   	gets(q->option4);
+	x=notempty(q->option4);
+	} while (x==0);
 	
 
-	printf("\nEnter the letter of the correct answer (A, B, C or D): ");
-	fgets(q->ans, length, stdin);
-	
 	while(strlen(q->ans) != 2){ 
-		printf("\nEnter the letter of the correct answer (A, B, C or D): ");
-		fgets(q->ans, length, stdin);
+		printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
+		gets(q->ans);
 	}
 	
-	fputs(ANSWER, fPtr);
-   	fputs(q->ans, fPtr);
-	
-	fputs(separator, fPtr);
-	
+
+	fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,q->option1,q->option2,q->option3,q->option4,q->ans,"0");
 	
 	fclose(fPtr);
    	
