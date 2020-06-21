@@ -75,3 +75,112 @@ int professor(char *u_id){
 		}
 	}while(chh!=7);
 }
+
+
+
+
+void mark_questions_and_display_results(char *u_id, char *topic, char *stu_id){
+
+struct question1
+	{
+		char r_id[4];
+		char stu_id[15];
+		char q_id[15];
+		char sub[25];
+		char question[150];
+		char op1[30];
+		char op2[30];
+		char op3[30];
+		char op4[30];
+		char answer[4];
+		char reslt[5];
+};
+
+	int x=0;
+	char buffer[1024] ;
+    char *record,*line;
+	FILE *fstream = fopen("result.csv","r");
+	struct question1 qstn[1500];
+    if(fstream == NULL){
+        printf("\n file opening failed ");
+
+    }
+	else{
+		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
+			record = strtok(line,";");
+			while(record != NULL){
+
+				char *ptr=strtok(record,",");
+                		strcpy(qstn[x].r_id,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(qstn[x].stu_id ,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(qstn[x].q_id,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(qstn[x].sub,ptr);
+                		ptr = strtok(NULL, ",");
+				strcpy(qstn[x].question,ptr);
+				ptr = strtok(NULL, ",");	
+				strcpy(qstn[x].op1,ptr);
+				ptr = strtok(NULL, ",");	
+				strcpy(qstn[x].op2,ptr);	
+				ptr = strtok(NULL, ",");	
+				strcpy(qstn[x].op3,ptr);	
+				ptr = strtok(NULL, ",");	
+				strcpy(qstn[x].op4,ptr);	
+				ptr = strtok(NULL, ",");	
+				strcpy(qstn[x].answer,ptr);	
+				ptr = strtok(NULL, ",");	
+				strcpy(qstn[x].reslt,ptr);	
+				ptr = strtok(NULL, ",");	
+				
+				x++;				
+				record = strtok(NULL,";");
+                //printf("%d",x);
+			}
+		
+		}
+		///printf("\n\n\n%d\n\n\n\n",x);
+		
+	}
+	fclose(fstream);
+    //puts(professorid);
+    int i;
+	
+	int counter=0,total1=0;
+	for(i=0;i<x;i++){
+		//printf("%s",qstn[i].r_id);
+		 //((strcmp(rtrim(qstn[i].answer),rtrim(qstn[i].reslt)))==0) && ((strcmp("0",rtrim(qstn[i].sub==topic)) ==0)
+		 if(strcmp(rtrim(qstn[i].sub),topic)==0 &&  strcmp(rtrim(qstn[i].stu_id),stu_id)==0){
+			total1++;
+		 }
+		 
+		if(strcmp(rtrim(qstn[i].answer),rtrim(qstn[i].reslt))==0 &&  strcmp(rtrim(qstn[i].sub),topic)==0 &&  strcmp(rtrim(qstn[i].stu_id),stu_id)==0 ){
+			counter++;
+			//printf("\n%s    %s     %s   %s ", );
+		}
+	}
+	printf("\n\nResult of student %s. Marks got %d out of %d\n\n",stu_id,counter, (x-1));
+	FILE *u_profile;
+	
+	u_profile=fopen("final_result.csv","a");
+	int j;
+		if(u_profile==NULL){
+			printf("Unable to create a file");
+		}
+		else{
+			printf("hello");
+			int id=generate_Id("final_result.csv");
+			char id1[5];
+			sprintf(id1,"%d",id);
+			fprintf(u_profile,"%s,%s,%s,%s,%d,%d\n",id1,u_id,stu_id,topic,counter,total1);
+		}
+	fclose(u_profile);
+
+}
+
+
+
+
+
+

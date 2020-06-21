@@ -76,6 +76,8 @@ int main(int argc, char *argv[]){
     printf("\n*********************************************************************\n");
 
     printf("                Press 1 LOGIN\n");
+    printf("                Press 2 CREATE A PROFESSOR ACCOUNT\n");
+    printf("                Press 3 CREATE A STUDENT ACCOUNT\n");
     printf("                Press 2 EXIT\n");
 	fgets(ch,range,stdin);
 	switch(atoi(ch)){
@@ -108,7 +110,7 @@ int main(int argc, char *argv[]){
 				//code
 			}
 			else if(strcmp(u_type,"Student")==0){
-				student(id1);
+				student();
 				
 		
 			}
@@ -120,7 +122,12 @@ int main(int argc, char *argv[]){
 			}
 			printf("%s\n",u_type);
 			break;
+		
 		case 2:
+			create_prof_profile();
+		case 3:
+			student();
+		case 4:
 			printf("Thank you Exit\n");
 			break;
 		default:
