@@ -55,8 +55,8 @@ Examonline:
 	$(CC) -o $(BINDIR)/Test $(OBJDIR)/objtest/test.o obj/user_maintainance.o obj/validation.o obj/student.o obj/professor.o obj/profile_creation.o obj/exam.o
 	
 	@echo "Now you can run test and Examonline files from  bin directory by using following commands"
-	@echo "bin/./Examonline"
-	@echo "bin/./test"
+	@echo "./bin/Examonline"
+	@echo "./bin/test"
 	
 .PHONY: clean
 clean:
