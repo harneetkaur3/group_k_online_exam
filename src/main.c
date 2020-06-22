@@ -3,8 +3,10 @@
 *
 *
 *	Authors:
-*				@author Essra
-*				@author Harneet Kaur
+				@author Harneet Kaur
+				@author Sanjana
+*				@author Esraa Abujayyab
+*				
 *
 *
 * Contains the main function from which different functions
@@ -70,8 +72,11 @@ int getch(void){
 *
 *
 **	Authors:
-*				@author Essra
-*				@author Harneet Kaur
+				@author Harneet Kaur
+				@author Sanjana
+*				@author Esraa Abujayyab
+				
+*				
 *
 *
 * Expects a user type from the login function
