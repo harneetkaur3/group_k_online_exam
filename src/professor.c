@@ -199,7 +199,7 @@ void add_question(char* exam, char *u_id){
 		x=notempty(q->option4);
 	}while(x==0);
 	
-	while(strlen(q-> != 2)){
+	while(strlen(q->ans) != 2){
 		printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
 		scanf("%s",q->ans);
 	}	
