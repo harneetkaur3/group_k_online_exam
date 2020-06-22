@@ -10,7 +10,6 @@
 *
 * Contains the following functions:
 * disp_topics all topics
-* create_student_account() create student profile
 * check_req_status() Checks the status of request raised by the student
 * submittest() This function saves the data into file once the exam accomplished
 * modifyanswer() This function modify the anser once student attempts all question he/she can modify answers before submission
@@ -548,7 +547,7 @@ char* raiseTestRequest(char *u_id, int topic){
 int student(char *u_id){
 	int chh;
 	do{
-		printf("\n                Press 1 Testdeatil......\n");
+		printf("\n                Press 1 Test detail......\n");
 		printf("                Press 2 Edit personal profile\n");
 		printf("                Press 3 ________________\n");
 		printf("                Press 4 Start test\n");
