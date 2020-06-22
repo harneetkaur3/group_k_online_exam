@@ -4,7 +4,6 @@
 *
 *	Authors:
 *				@author Harneet Kaur
-* 				@author Essra 
 * 				@author Abinav
 *
 * Contains the following functions:
@@ -31,15 +30,16 @@
 #endif
 
 
-
+#define number1 10
+#define number2 20
 
 
 
 /*Structure used in change password to get username password and user_type*/
 struct user{
-    char username[10];
-	char password[10];
-	char user_type[20];
+    char username[number1];
+	char password[number2];
+	char user_type[number2];
 };
 
 /*
