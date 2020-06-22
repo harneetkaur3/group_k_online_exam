@@ -1,3 +1,26 @@
+
+
+/**
+* \file student.c
+*
+*	Authors:
+*				@author Harneet Kaur
+* 				
+*
+*
+* Contains the following functions:
+* disp_topics all topics
+* check_req_status() Checks the status of request raised by the student
+* submittest() This function saves the data into file once the exam accomplished
+* modifyanswer() This function modify the anser once student attempts all question he/she can modify answers before submission
+* starttest() This function starts the test on the student screen
+* raisetestrequest() This function raises a new request to get approval for a new exam
+* student() This function gives vaious options to the student
+*
+*/
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -18,6 +41,9 @@ char temp[200][5];
 
 /**
 * \brief  int disp_topics() function display the topics
+*
+*
+*  @author : Harneet Kaur
 *
 * Function dipslay all the topics from the topics.csv file and show to the user
 *
@@ -88,15 +114,22 @@ int disp_topics(){
 /**
 * \brief  int check_req_status(char *u_id, char *topic) function checks whether a user approved or not 
 *
+*  @author : Harneet Kaur
+*
+*
 * Function open the file of requests.csv 
 *
+* @param [in] char *u_id gives the id of logged in user
+* @param [in] char *topic selected topic by the student
 *
-* \return Topic: Selected index of topic is returned to the calling function to start the test
+*
+*
+* \return integer: returns status 0-not approved 1-Approved
 *
 */
+
 int check_req_status(char *u_id, char *topic)
 {
-	
 	char buffer[1024] ;
     char *record,*line;
 	FILE *rqsts;
@@ -154,6 +187,8 @@ int check_req_status(char *u_id, char *topic)
 	}
 	return 3;
 }
+
+/*Structure question to store the detail of question*/
 struct questions
 	{
 		char q_id[4];
@@ -167,6 +202,25 @@ struct questions
 		char reslt[5];
 	};
 	
+
+/**
+* \fn submit_test(char *u_id,int x, struct questions rslt[])
+* \brief  This function saves the data into file once the exam accomplished
+*
+*  @author : Harneet Kaur
+*
+*
+* Function open the file of requests.csv 
+*
+* @param [in] char *u_id gives the id of logged in user
+* @param [in] int x size of structure array
+* @param [in] struct questions rslt[] array of all questions attempted by the student
+*
+*
+*
+* \return No return type
+*
+*/
 void submit_test(char *u_id,int x, struct questions rslt[])
 {
 	
@@ -192,6 +246,26 @@ void submit_test(char *u_id,int x, struct questions rslt[])
 	
 }
 	
+	
+	
+/**
+* \fn modify_answer(char *u_id,int x, struct questions rslt[])
+* \brief  This function modify the anser once student attempts all question he/she can modify answers before submission
+*
+*  @author : Harneet Kaur
+*
+*
+* 
+*
+* @param [in] char *u_id gives the id of logged in user
+* @param [in] int x size of structure array
+* @param [in] struct questions rslt[] array of all questions attempted by the student
+*
+*
+*
+* \return int returns 1 if succesfull else 0
+*
+*/
 	
 int modify_answer(char *u_id,int x, struct questions rslt[])
 {
@@ -254,6 +328,25 @@ int modify_answer(char *u_id,int x, struct questions rslt[])
 	
 
 }
+
+
+/**
+* \fn start_test(char *u_id, char *topic)
+* \brief  This function starts the test on the student screen
+*
+*  @author : Harneet Kaur
+*
+*
+* 
+*
+* @param [in] char *u_id gives the id of logged in user
+* @param [in] char * topic topic name
+* 
+*
+*
+* \return nothing
+*
+*/
 
 void start_test(char *u_id, char *topic)
 {
@@ -388,28 +481,73 @@ void start_test(char *u_id, char *topic)
 
 
 
+/**
+* \fn char* raiseTestRequest(char *u_id, int topic)
+* \brief  This function raises a new request to get approval for a new exam
+*
+*  @author : Harneet Kaur
+*
+*
+* 
+*
+* @param [in] char *u_id gives the id of logged in user
+* @param [in] char * topic topic name
+* 
+*
+*
+* \return charater wether the request raised or not
+*
+*/
+
+
 char* raiseTestRequest(char *u_id, int topic){
 	FILE *rqsts;
 	int request_id=generate_Id("requests.csv");
 	rqsts = fopen("requests.csv","a");
 	if(rqsts == NULL){
     	printf("Unable to create file. \n");
-    	exit(EXIT_FAILURE);
+    	return "Failed to open a file";
     }
+	else if(topic==900){
+		printf("Unable to open file. \n");
+		return "Failed to open a file";
+	}
+	else if(topic==990)
+	{
+		return "Request Raised";
+	}
 	else{
 		//strcpy(temp,"0");
-		fprintf(rqsts,"%d,%s,%s,%s,%s",request_id,u_id,t_name[topic],rtrim(instructor_id[topic]),temp[topic]);
+		fprintf(rqsts,"%d,%s,%s,%s,%s\n",request_id,u_id,t_name[topic],rtrim(instructor_id[topic]),temp[topic]);
 		printf("request raised");
+		return "Request Raised";
 		
 	}
 	fclose(rqsts);
 }
 
 
+/**
+* \fn int student(char *u_id)
+* \brief  This function gives vaious options to the student 
+*
+*  @author : Harneet Kaur
+*
+*
+* 
+*
+* @param [in] char *u_id gives the id of logged in user
+* 
+* 
+*
+*
+* \return integer after succesfull execution return 1 otherwise 0
+*
+*/
 int student(char *u_id){
 	int chh;
 	do{
-		printf("\n                Press 1 Testdeatil......\n");
+		printf("\n                Press 1 Test detail......\n");
 		printf("                Press 2 Edit personal profile\n");
 		printf("                Press 3 ________________\n");
 		printf("                Press 4 Start test\n");

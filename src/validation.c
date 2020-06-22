@@ -1,3 +1,23 @@
+/**
+* \file Validation.c
+*
+*	Authors:
+*				@author Harneet Kaur
+* 				
+* Contains the following functions:
+* generate_Id() to create a unique serial number for any file
+* rtrim() removes the extra spces from the right of any passed character
+* notempty() function checks wether a strign is empty or not
+* valid_email(char test[]) Checks the validity of an email
+* valid_phone(char phone[]) Checks the validity of phonenumber
+* 
+*
+*/
+
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -6,6 +26,22 @@
 #include<ctype.h>
 
 
+
+/**
+* \fn  int generate_Id(char *f_name)
+* \brief This function generate a unique serial number for a file to insert the data 
+*
+*	Authors:
+*				@author Harneet Kaur
+* 
+*
+* This function counts all the available record in the file and increment that value with 1.
+*
+* @param[in] char *f_name accpts the .csv file from the calling function
+*
+* \return uniqueid
+*
+*/
 
 int generate_Id(char *f_name)
 {
@@ -61,12 +97,14 @@ int generate_Id(char *f_name)
 
 /**
 * \brief Removes the extra spacing
+*	Authors:
+*				@author Harneet Kaur
 *
 * It will delete or trim the extra space in the array of characters by calling this function
 *
 * @param[in] char *s Array of Character Pointer, pointing to the character of size char
 *
-* \return User_Type: Pointer to the array of character
+* \return trimed value: 
 *
 */
 char *rtrim(char *s){
@@ -79,12 +117,14 @@ char *rtrim(char *s){
 
 /**
 * \brief Validating that string is empty or not
+*	Authors:
+*				@author Harneet Kaur
 *
 * Given string by the user is validated that it is empty or not
 *
 * @param[in] char num[] Array of characters given by the user
 *
-* \return User_Type: 0: For Error of the invalid character
+* \return integer: 0: For Error of the invalid character
 * 					  1: Positive case for valid character
 *
 */
@@ -99,11 +139,14 @@ int notempty(char num[] ){
 /**
 * \brief Validating the given string
 *
+*	Authors:
+*				@author Harneet Kaur
+*
 * Given string by the user is validated that email is having with '@' and '.'
 *
 * @param[in] char test[] Array of characters given by the user
 *
-* \return User_Type: 0: For Error of the invalid email
+* \return integer: 0: For Error of the invalid email
 * 					  1: Positive case for valid email
 *
 */
@@ -138,12 +181,16 @@ int valid_email(char test[]){
 /**
 * \brief Validating the Phone number
 *
+*	Authors:
+*				@author Harneet Kaur
+*
+*
 * Validating the given array of character that it is of length 10
 * If not of length 10, gives an invalid message
 *
 * @param[in] char phone[] Array of character pointers
 *
-* \return User_Type: 0: For Error of the invalid phone number
+* \return integer: 0: For Error of the invalid phone number
 * 					  1: Positive case the valid phone number
 */
 

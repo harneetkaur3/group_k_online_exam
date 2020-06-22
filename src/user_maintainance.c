@@ -1,8 +1,27 @@
+
+/**
+* \file user_maintainance.c
+*
+*	Authors:
+*				@author Harneet Kaur
+* 				@author Abinav
+*
+* Contains the following functions:
+* change password() to allow the user to change the password
+* login() function to validate and authorize the user
+* Getrow() function gets a record form the file to update and call the function update file
+* EditProfile() Allows the professor to modify employee details
+* 
+*
+*/
+
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #define range 10
-
+#define number2 20
 
 #ifdef WINDOWS
     #include "..\include\validation.h"
@@ -16,11 +35,31 @@
 
 
 
+/*Structure used in change password to get username password and user_type*/
 struct user{
-    char username[10];
-	char password[10];
-	char user_type[20];
+    char username[range];
+	char password[number2];
+	char user_type[number2];
 };
+
+/*
+ * char* changePassword(char *uname,char *oldpwd,char *newpwd)
+ *
+ *  Created on: Jun 16, 2020
+ *      Author: Abinav
+ *
+ *
+ * @param [in]: char *u_name gets the user name;
+ * @param [in]: char *u_name gets the user name;
+ * @param [in]: char *oldpwd gets the new password;
+ *
+ * This function takes these three arguments and chage the password
+ *
+ *
+ * return: It returns a character as a suer type: Professor/Student
+ *
+ *
+ */
 
 char* changePassword(char *uname,char *oldpwd,char *newpwd){
 
@@ -99,7 +138,7 @@ char* changePassword(char *uname,char *oldpwd,char *newpwd){
 
 /**
 *
-* \fn struct profile1
+* \structure struct profile1
 * \brief it would get all the data of a file user_profiles to updte particular value
 *
 *
@@ -124,6 +163,10 @@ struct profile1{
 * \fn char* login(char *id, char *pwd)
 * \brief Checks the login credentials from database file to assign the user type: Admin,Student,Professor.
 *
+*	Author: Harneet Kaur
+*	
+*
+*
 * Accesses the login_details table from database and matches
 * login credentials provided by the user corresponding to the
 * data entry in the database
@@ -133,10 +176,9 @@ struct profile1{
 *
 * \return User_Type: admin, student or professor for successful login
 *		   Wrong username/password for incorrect login credentials
-*		   User deactivated if the user is deactivated in database
+*		   
 *
 */
-
 
 
 char* login(char *u_id, char *pwd){
@@ -174,6 +216,27 @@ char* login(char *u_id, char *pwd){
 	fclose(user_credentials);
 }
 
+
+/**
+*
+* \fn void update_file(int x, struct profile1 pf[])
+* \brief This Function updates the file user_profiles.csv once user edit their profile
+*
+*	Author: Harneet Kaur
+*	
+*
+*
+* Accesses the user_profiles table from database and matches user id
+* User can select the particular files what information he/she wants to update
+* data entry in the file after updation
+*
+* @param[in] x size of the structure array
+* @param[in] pf struct f profile1 to get all information to update the file
+*
+* \return No return type once the file updates it prints that data has been entered 
+*
+*
+*/
 void update_file(int x, struct profile1 pf[])
 {
 	FILE *u_profile;
@@ -197,6 +260,9 @@ void update_file(int x, struct profile1 pf[])
 *
 * \fn void getrow(char *u_id, char *arg_type, char *upadteval)
 * \brief This function gets a record form the file to update and call the function update file
+*
+* \Author: Harneet Kaur
+*
 *
 * access the user_profiles file
 * 
@@ -304,10 +370,12 @@ void getrow(char *u_id, char *arg_type, char *upadteval){
 /**
 *
 * \fn char* editProfile(char *u_id)
-* \brief Allows the admin to modify employee details.
+* \brief Allows the professor to modify employee details.
 *
-* Allows the admin to modify existing employee details.
-* Depending on admin input different fields can be modified.
+* Accesses the user_profiles table from database and matches user id
+* User can select the particular files what information he/she wants to update
+* data entry in the file after updation
+*
 *
 * @param[in] emp_id employee id whose details to be modified by the admin
 *
