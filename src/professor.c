@@ -150,10 +150,11 @@ struct QUESTION{
 *				
 *				@author Esraa Abujayyab
 *
-* Function dipslay all the topics from the topics.csv file and show to the user
+* Function which allows a professor to add a question to a certain exam topic in questions.csv. It takes the exam topic and user id
+* as it parameters to keep track who added the question, and where to add the question to.
 *
 *
-* \return No return Just displays the message after submission
+* \return No return, just displays the message after adding the question.
 *
 */
 
