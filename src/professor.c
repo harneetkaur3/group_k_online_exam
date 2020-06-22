@@ -1,3 +1,28 @@
+
+/**
+* \file professor.c
+*
+*	Authors:
+*				@author Harneet Kaur
+* 				@author Essra 
+* 				@author Abinav
+*
+* Contains the following functions:
+* disp_topics() function display the topics
+* add_question() adds the question into the file
+* update_questions() sends the data into file
+* edit_questions() gets and edits the data of a file
+* editProfile() Allows the professor to modify employee details
+* deleteQuestion() deletes a question from the file..
+* allowstudent() Approves the raised request fro student to give the exam
+* mark_questions_and_display_results() allows to mark the students question and generate result, and also saves under the final _result file
+* professor() allows the professor to select multiple choices to perform other functions
+*
+*
+*/
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -11,17 +36,6 @@
     #include "../include/validation.h"
 	#include "../include/user_maintainance.h"
 #endif
-
-
-
-#ifdef WINDOWS
-    #include "..\include\validation.h"
-	#include "..\include\profile_creation.h"
-#else
-    #include "../include/validation.h"
-	#include "../include/profile_creation.h"
-#endif
-
 
 
 
@@ -39,6 +53,11 @@
 
 /**
 * \brief  int disp_topics() function display the topics
+*
+*
+*	Authors:
+*				
+*				@author Harneet Kaur
 *
 * Function dipslay all the topics from the topics.csv file and show to the user
 *
@@ -110,7 +129,7 @@ char* disp_topics1(char *prof_id){
 
 
 
-
+/*structure used in add_question represents a question parameters*/
 struct QUESTION{
 	int id;
 	char question[length];
@@ -121,11 +140,93 @@ struct QUESTION{
 	char ans[2];
 };
 
+/**
+* \fn void add_question(char* exam, char *u_id)
+* \brief This function add a question into the questions.csv
+*
+*
+*	Authors:
+*				
+*				@author Essra
+*
+* 
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
+
+void add_question(char* exam, char *u_id){
+	struct QUESTION* q = malloc(sizeof(struct QUESTION*));
+
+
+	q->id=generate_Id("questions.csv");
+	//printf("%d",id);
+	char *topic3=disp_topics1(u_id);
+	printf("%s",topic3);
+	int x=0;
+	getchar();
+	do{
+		printf("\nEnter the question: ");
+		gets(q->question);
+		x=notempty(q->question);
+	}while(x==0);
+	
+	//fputs(QUESTIONs, fPtr);
+	//fputs(q->question, fPtr);
+
+	char op1[30];
+	do{
+		printf("\nEnter the first option - A. ");
+		gets(op1);
+		x=notempty(op1);
+	}while(x==0);
+	//fgets(q->option1, length, stdin);
+	//fputs(O1, fPtr);
+	//fputs(q->option1, fPtr);
+	char op2[30];
+	do{
+		printf("\nEnter the second option - B. ");
+		gets(op2);
+		x=notempty(op2);
+	}while(x==0);
+	do{
+		printf("\nEnter the third option - C. ");
+		gets(q->option3);
+		x=notempty(q->option3);
+	}while(x==0);
+	do{
+		printf("\nEnter the fourth option - D. ");
+		gets(q->option4);
+		x=notempty(q->option4);
+	}while(x==0);
+	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
+	scanf("%s",q->ans);
+		
+	
+	FILE *qtn;
+	qtn = fopen("questions.csv","a");
+	if(qtn==NULL){
+		printf("Exam cannot be found \n");
+		exit(EXIT_FAILURE);
+	}
+	else{
+		//printf("%d,%s,%s,%s,%s,%s,%s,%s,%s",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
+		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
+		printf("\nQuestion added successfully \n" );
+		fclose(qtn);
+	}
+} 
 
 
 
 
 
+
+
+
+
+/*struct request is used to approve the request of raised from the students*/
 
 struct request{
     char requestid[10]; 
@@ -134,6 +235,10 @@ struct request{
 	char professorid[20];
     char allow[5];
 };
+
+/*struct questions is used add a new question*/
+
+
 struct questions
 	{
 		char q_id[4];
@@ -150,6 +255,21 @@ struct questions
 
 
 
+/**
+* \fn void update_question(int x, struct questions pf[])
+* \brief This function aupdate a  question into the questions.csv
+*
+*
+*	Authors:
+*				
+*				@author Abinav
+*
+* 
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
 
 void update_questions(int x, struct questions pf[]) {
     //puts("inthis method");
@@ -178,6 +298,21 @@ void update_questions(int x, struct questions pf[]) {
 
 // Edit question
 
+/**
+* \fn void editQuestion(char *topic)
+* \brief This function a gets the older data from the questions.csv and update it
+*
+*
+*	Authors:
+*				
+*				@author Abinav
+*
+* 
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
 
 void editQuestion(char *topic){
 // puts(queid);
@@ -352,6 +487,23 @@ puts(questionid);
 
 // deleting a questions
 
+
+/**
+* \fn void deleteQuestion(char *topic)
+* \brief This function a gets the older data from the questions.csv and delete a specific question
+*
+*
+*	Authors:
+*				
+*				@author Abinav
+*
+* 
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
+
  void deleteQuestion(char *topic,char *quid){
 
    //// finding total rows of the column
@@ -415,12 +567,28 @@ puts(questionid);
 			
 	}
 	fclose(u_profile);
-    puts("deeleted successfully");
+    puts("Deleted successfully");
     getchar();  		
  }
 
 //end of deleting question function
 // Allow student
+
+/**
+* \fn void allowstudent(char *professorid)
+* \brief This function a gets the data from requests.csv and update the allow the student to give the exam.
+*
+*
+*	Authors:
+*				
+*				@author Abinav
+*
+* 
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
 
 void allowstudent(char *professorid){
 	
@@ -521,99 +689,23 @@ void allowstudent(char *professorid){
 // end Allow student
 
 
+/**
+* \fn void mark_questions_and_display_results(char *u_id,char *topic, char *stu_id)
+* \brief This function generate the result for a particular student
+*
+*
+*	Authors:
+*				
+*				@author Essra
+*
+* 
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
 
-
-
-int professor(char *u_id){
-	int chh;
-	do{
-		printf("\n                Press 1 Edit personal profile\n");
-		printf("                Press 2 Add new Topic\n");
-		printf("                Press 3 Add a Question\n");
-		printf("                Press 4 Update a question\n");
-		printf("                Press 5 Delete a question\n");
-		printf("                Press 6 Approve student request\n");
-		printf("                Press 7 Generate Result\n");
-		printf("                Press 8 change password ...........\n");
-		printf("                Press 9 to Log Out!!\n");
-		scanf("%d",&chh);
-		switch(chh){
-			case 1:{
-				char dcsn[6];
-				editProfile(u_id);
-				break;
-			}
-			case 2:{
-				
-				
-				break;
-			}
-			case 3:{
-				 
-				break;
-			}
-			case 4:{
-				char *topic3=disp_topics1(u_id);
-				editQuestion(topic3);
-				break;
-			}
-			case 5:{
-				char *topic3=disp_topics1(u_id);
-				char qqid[5];
-				printf("\n Enter question id to delete");
-				scanf("%s",qqid);
-				deleteQuestion(topic3,qqid);
-				break;
-			}
-			case 6:{
-				//printf("hello");
-				allowstudent(u_id);
-				break;
-			}
-			case 7:{
-				
-				//printf("hello");
-				//allowstudent(u_id);
-				break;
-			}
-			case 8:{
-				char pwd[15];
-				char id1[11];
-			    char new_pwd[15];
-			    printf("\nEnter your old password:");
-			 	scanf("%s",pwd);
-				//getchar();
-			    printf("\nEnter your new password:");
-			 	scanf("%s",new_pwd);
-			    stpcpy(pwd,rtrim(pwd));
-			    stpcpy(new_pwd,rtrim(new_pwd));
-
-				char user_status[60];
-				strcpy(user_status,changePassword(u_id,pwd,new_pwd));
-    			puts(user_status);
-				break;
-			}
-			case 9:{
-				printf("\n Thank you! Have Good Day....");
-				return 1;
-			}
-			default:{
-				printf("wrong input");
-				break;
-			}
-		}
-
-=======
-	}while(chh!=7);
-
-}
-
-
-
-
-
-
-void mark_questions_and_display_results(char *u_id, char *topic, char *stu_id){
+void mark_questions_and_display_results(char *u_id,char *topic, char *stu_id){
 
 struct question1
 	{
@@ -645,14 +737,14 @@ struct question1
 			while(record != NULL){
 
 				char *ptr=strtok(record,",");
-                		strcpy(qstn[x].r_id,ptr);
+                strcpy(qstn[x].r_id,ptr);
 				ptr = strtok(NULL, ",");
 				strcpy(qstn[x].stu_id ,ptr);
 				ptr = strtok(NULL, ",");
 				strcpy(qstn[x].q_id,ptr);
 				ptr = strtok(NULL, ",");
 				strcpy(qstn[x].sub,ptr);
-                		ptr = strtok(NULL, ",");
+                ptr = strtok(NULL, ",");
 				strcpy(qstn[x].question,ptr);
 				ptr = strtok(NULL, ",");	
 				strcpy(qstn[x].op1,ptr);
@@ -740,164 +832,106 @@ int show_exam_results(){
 }
 
 
-void add_question(char* exam, char *u_id){
-	struct QUESTION* q = malloc(sizeof(struct QUESTION*));
+/**
+* \fn professor(char *u_id)
+* \brief This function gives the various choices to the professor to perform different functions
+*
+*
+*	Authors:
+*				
+*				@author Harneet Kaur
+*
+* @param char *u_id the professor id who logged into the application
+*
+*
+* \return No return Just displays the message after submition
+*
+*/
 
-
-	q->id=generate_Id("questions.csv");
-
-	char *topic3=disp_topics1(u_id);
-	printf("%s",topic3);
-	int x=0;
-	getchar();
+int professor(char *u_id){
+	int chh;
 	do{
-		printf("\nEnter the question: ");
-		gets(q->question);
-		x=notempty(q->question);
-	}while(x==0);
-	
+		printf("\n                Press 1 Edit personal profile\n");
+		printf("                Press 2 Add new Topic\n");
+		printf("                Press 3 Add a Question\n");
+		printf("                Press 4 Update a question\n");
+		printf("                Press 5 Delete a question\n");
+		printf("                Press 6 Approve student request\n");
+		printf("                Press 7 Generate Result\n");
+		printf("                Press 8 change password ...........\n");
+		printf("                Press 9 to Log Out!!\n");
+		scanf("%d",&chh);
+		switch(chh){
+			case 1:{
+				char dcsn[6];
+				editProfile(u_id);
+				break;
+			}
+			case 2:{
+				
+				
+				break;
+			}
+			case 3:{
+				 add_question("questions.csv", u_id);
+				break;
+			}
+			case 4:{
+				char *topic3=disp_topics1(u_id);
+				editQuestion(topic3);
+				break;
+			}
+			case 5:{
+				char *topic3=disp_topics1(u_id);
+				char qqid[5];
+				printf("\n Enter question id to delete");
+				scanf("%s",qqid);
+				deleteQuestion(topic3,qqid);
+				break;
+			}
+			case 6:{
+				//printf("hello");
+				allowstudent(u_id);
+				break;
+			}
+			case 7:{
+				char *topic3=disp_topics1(u_id);
+				printf("Enter the studet id");
+				char stu_id[7];
+				scanf("%s",stu_id);
+				mark_questions_and_display_results(u_id,topic3,stu_id);
+				//printf("hello");
+				//allowstudent(u_id);
+				break;
+			}
+			case 8:{
+				char pwd[15];
+				char id1[11];
+			    char new_pwd[15];
+			    printf("\nEnter your old password:");
+			 	scanf("%s",pwd);
+				//getchar();
+			    printf("\nEnter your new password:");
+			 	scanf("%s",new_pwd);
+			    stpcpy(pwd,rtrim(pwd));
+			    stpcpy(new_pwd,rtrim(new_pwd));
 
-
-	char op1[30];
-	do{
-		printf("\nEnter the first option - 1. ");
-		gets(op1);
-		x=notempty(op1);
-	}while(x==0);
-
-	char op2[30];
-	do{
-		printf("\nEnter the second option - 2. ");
-		gets(op2);
-		x=notempty(op2);
-	}while(x==0);
-	do{
-		printf("\nEnter the third option - 3. ");
-		gets(q->option3);
-		x=notempty(q->option3);
-	}while(x==0);
-	do{
-		printf("\nEnter the fourth option - 4. ");
-		gets(q->option4);
-		x=notempty(q->option4);
-	}while(x==0);
-	
-	while(strlen(q->ans) != 2){
-	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
-	scanf("%s",q->ans);
-	}
-	
-	FILE *qtn;
-	qtn = fopen("questions.csv","a");
-	if(qtn==NULL){
-		printf("Exam cannot be found \n");
-		exit(EXIT_FAILURE);
-	}
-	else{
-		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
-		printf("\nQuestion added successfully \n" );
-		fclose(qtn);
-	}
-} 
-
-
-
-void create_prof_profile()
-{
-	char id[13];
-	char f_name[50];
-	char l_name[50];
-	char age[5];
-	char address1[45];
-	char address2[45];
-	char phonenumber[20];
-	char gender[10];
-	char email[100];
-	char dept[100];
-	char uni[100];
-	int x=0;
-    char ch;
-    int num;
-    getchar();
-    int id1=generate_Id("user_Profile.csv");
-	sprintf(id,"%d",id1);
-    do{
-        printf("Enter the first name of Professor\n");
-        gets(f_name);
-        x=notempty(f_name);
-    }while(x==0);
-    x=0;
-    do{
-        printf("Enter the Last name of Professor\n");
-        gets(l_name);
-        x=notempty(l_name);
-    }while(x==0);
-    x=0;
-    printf("Enter the age of Professor\n");
-    scanf("%s",age);
-    getchar();
-    do{
-        printf("Enter house/apartment number and street\n");
-        gets(address1);
-        x=notempty(address1);
-    }while(x==0);
-    x=0;
-    do{
-        printf("\nEnter city and country\n");
-        gets(address2);
-        x=notempty(address2);
-    }while(x==0);
-    x=0;
-    do{
-        printf("Enter Phone number\n");
-        scanf("%s",phonenumber);
-        x=valid_phone(phonenumber);
-    } while(x==0);
-    x=0;
-    do{
-        printf("\nEnter gender Male , Female or Others\n");
-        scanf("%s",gender);
-        if (strcasecmp(gender,"Male")==0 || strcasecmp(gender,"Female")==0 || strcasecmp(gender,"Female")==0){
-            x=1;
-            break;
-        }
-    } while(x==0);
-    x=0;
-    do{
-        printf("Enter email\n");
-        scanf("%s",email);
-        x=valid_email(email);
-    }while(x==0);
-    x=0;
-    do{
-        printf("Enter the department of Professor\n");
-        gets(dept);
-        x=notempty(dept);
-    }while(x==0);
-    x=0;
-
-    do{
-        printf("Enter the designation of Professor\n");
-        gets(uni);
-        x=notempty(uni);
-    }while(x==0); 
-	FILE * fPtr = fopen("user_profiles.csv","a"); 
-   
-	
-    if(fPtr == NULL)
-    {
-    	printf("unable to create file. \n");
-    	exit(EXIT_FAILURE);
-    } 
-	else{
-		fprintf(fPtr,"%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s \n",id,f_name,l_name,age,address1,address2,phonenumber,gender,email,dept,uni,"Professor");
-		printf("\nAccount created and saved successfully \n" );
-	}
-	fclose(fPtr);
+				char user_status[60];
+				strcpy(user_status,changePassword(u_id,pwd,new_pwd));
+    			puts(user_status);
+				break;
+			}
+			case 9:{
+				printf("\n Thank you! Have Good Day....");
+				return 1;
+			}
+			default:{
+				printf("wrong input");
+				break;
+			}
+		}
+	}while(chh!=9);
 }
-
-
-
 
 
 

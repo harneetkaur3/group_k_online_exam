@@ -1,6 +1,12 @@
 /**
 * \file main.c
 *
+*
+*	Authors:
+*				@author Essra
+*				@author Harneet Kaur
+*
+*
 * Contains the main function from which different functions
 * located in other files are called to perform different
 * tasks assigned for student and Professor based on the
@@ -35,6 +41,9 @@
 /**
 * \brief Get or scan the value from the console screen
 *
+*				@author Internet
+*						Used and modifed by: Harneet Kaur
+*
 * Function can be called for any type of user-> Admin, Manager, Employee who want to scan the values from console screeen
 *
 * @param [void] No Arguments will be passed
@@ -59,6 +68,12 @@ int getch(void){
 /**
 * \brief The main function which distributes various tasks to other functions.
 *
+*
+**	Authors:
+*				@author Essra
+*				@author Harneet Kaur
+*
+*
 * Expects a user type from the login function
 * Based on the functionalities provided for the user type
 * and corresponding user inputs calls the other functions.
@@ -78,10 +93,8 @@ int main(int argc, char *argv[]){
     printf("\n*********************************************************************\n");
 
     printf("                Press 1 LOGIN\n");
-    printf("                Press 2 CREATE A PROFESSOR ACCOUNT\n");
-    printf("                Press 3 CREATE A STUDENT ACCOUNT\n");
     printf("                Press 2 EXIT\n");
-	printf("                Press 3 Create a New Profile\n");
+	printf("                Press 3 Create a New Profile...\n");
 	fgets(ch,range,stdin);
 	switch(atoi(ch)){
 		case 1:
@@ -113,7 +126,7 @@ int main(int argc, char *argv[]){
 				//code
 			}
 			else if(strcmp(u_type,"Student")==0){
-				student();
+				student(id1);
 				
 		
 			}
@@ -125,12 +138,7 @@ int main(int argc, char *argv[]){
 			}
 			printf("%s\n",u_type);
 			break;
-		
 		case 2:
-			create_prof_profile();
-		case 3:
-			student();
-		case 4:
 			printf("Thank you Exit\n");
 			break;
 		case 3:
@@ -142,7 +150,7 @@ int main(int argc, char *argv[]){
 				create_student_account(NULL);
 			}
 			else if(chh==2){
-				//create_prof_profile();
+				create_prof_profile();
 			}
 			else{
 				printf("Wrong Input");
