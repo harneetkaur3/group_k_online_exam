@@ -745,7 +745,7 @@ void add_question(char* exam, char *u_id){
 
 
 	q->id=generate_Id("questions.csv");
-	//printf("%d",id);
+
 	char *topic3=disp_topics1(u_id);
 	printf("%s",topic3);
 	int x=0;
@@ -756,37 +756,36 @@ void add_question(char* exam, char *u_id){
 		x=notempty(q->question);
 	}while(x==0);
 	
-	//fputs(QUESTIONs, fPtr);
-	//fputs(q->question, fPtr);
+
 
 	char op1[30];
 	do{
-		printf("\nEnter the first option - A. ");
+		printf("\nEnter the first option - 1. ");
 		gets(op1);
 		x=notempty(op1);
 	}while(x==0);
-	//fgets(q->option1, length, stdin);
-	//fputs(O1, fPtr);
-	//fputs(q->option1, fPtr);
+
 	char op2[30];
 	do{
-		printf("\nEnter the second option - B. ");
+		printf("\nEnter the second option - 2. ");
 		gets(op2);
 		x=notempty(op2);
 	}while(x==0);
 	do{
-		printf("\nEnter the third option - C. ");
+		printf("\nEnter the third option - 3. ");
 		gets(q->option3);
 		x=notempty(q->option3);
 	}while(x==0);
 	do{
-		printf("\nEnter the fourth option - D. ");
+		printf("\nEnter the fourth option - 4. ");
 		gets(q->option4);
 		x=notempty(q->option4);
 	}while(x==0);
+	
+	while(strlen(q->ans) != 2){
 	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
 	scanf("%s",q->ans);
-		
+	}
 	
 	FILE *qtn;
 	qtn = fopen("questions.csv","a");
@@ -795,7 +794,6 @@ void add_question(char* exam, char *u_id){
 		exit(EXIT_FAILURE);
 	}
 	else{
-		//printf("%d,%s,%s,%s,%s,%s,%s,%s,%s",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
 		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
 		printf("\nQuestion added successfully \n" );
 		fclose(qtn);
