@@ -21,7 +21,7 @@
 #include<stdlib.h>
 #include<string.h>
 #define range 10
-
+#define number2 20
 
 #ifdef WINDOWS
     #include "..\include\validation.h"
@@ -30,14 +30,14 @@
 #endif
 
 
-#define number1 10
-#define number2 20
+
+
 
 
 
 /*Structure used in change password to get username password and user_type*/
 struct user{
-    char username[number1];
+    char username[range];
 	char password[number2];
 	char user_type[number2];
 };
