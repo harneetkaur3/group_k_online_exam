@@ -61,9 +61,9 @@ void create_prof_profile()
 	char address2[number3];
 	char phonenumber[number2];
 	char gender[number1];
-	char email[number4;
-	char dept[number4]
-	char uni[number4;
+	char email[number4];
+	char dept[number4];
+	char uni[number4];
 	int x=0;
     char ch;
     int num;
