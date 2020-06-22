@@ -5,7 +5,7 @@
 *
 *	Authors:
 *				@author Sanjana
-* 				@author Essra 
+* 				@author Esraa 
 *
 *
 * Contains the following functions:
@@ -30,15 +30,20 @@
 	#include "../include/user_maintainance.h"
 #endif
 
-
-
+#define number0 5
+#define number1 10
+#define number2 20
+#define number3 50
+#define number4 200
 
 /**
  * \fn create_prof_profile()
- * This function creates a user profile
+ * This function creates a professor profile. It takes the required fields: id, first and last name, age, address, phone number, 
+ * gender, email, university, and department, from the user and stores it in a csv file, "user_profiles.csv". If the file is not 
+ * existing, it will create it, otherwise, it will add to the existing file.
  *
  *  
- *      Author: Essra
+ *      Author: Esraa Abujayyab
  *
  *
  *
@@ -48,17 +53,17 @@
 
 void create_prof_profile()
 {
-	char id[13];
-	char f_name[50];
-	char l_name[50];
-	char age[5];
-	char address1[45];
-	char address2[45];
-	char phonenumber[20];
-	char gender[10];
-	char email[100];
-	char dept[100];
-	char uni[100];
+	char id[number1];
+	char f_name[number3];
+	char l_name[number3];
+	char age[number0];
+	char address1[number3];
+	char address2[number3];
+	char phonenumber[number2];
+	char gender[number1];
+	char email[number4;
+	char dept[number4]
+	char uni[number4;
 	int x=0;
     char ch;
     int num;
