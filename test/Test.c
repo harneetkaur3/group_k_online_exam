@@ -170,4 +170,16 @@ int main(int argc, char *argv[])
 	printf("Expected result is it should return as successfull\n ");
   ASSERT_TEST(strcmp(edit_exam("1234","abc","def"),"successfull")!=0);
 	
+	printf("***********************************TEST 8 for change password*****************************************************\n");
+  printf("***********************************TEST 8A *****************************************************\n");
+	printf("We are going to change the password with the correct credentials\n");
+	printf("Expected result is it should return as updated successfully\n ");
+  ASSERT_TEST(strcmp(changePassword("2","abc","abc"),"yes")==0);
+	
+	printf("***********************************TEST 8 for change password*****************************************************\n");
+  printf("***********************************TEST 8B *****************************************************\n");
+	printf("We are going to change the password with the Wrong credentials\n");
+	printf("Expected result is it should return as Wrong old password\n ");
+  ASSERT_TEST(strcmp(changePassword("2","tt","tttttt"),"no")==0);
+	
 }
