@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
   ASSERT_TEST(check_req_status("9999","Demo1")==9);
 	
 	printf("*********************************TEST 4 for add_question***************************************\n");
-	printf("***********************************TEST 1A*****************************************************\n");
+	printf("***********************************TEST 4A*****************************************************\n");
 	printf("We are first going to input an exitsing u_id and exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
 	printf("Expected result: successful message which identicates the question has been created ans saved successfully.\n");
 	ASSERT_TEST(strcmp(add_question("Java", 4), "successful")==0);
