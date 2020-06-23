@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#define number0 5
+#define number1 10
+#define number2 20
+#define number3 50
+#define number4 200
+
+
 #ifdef WINDOWS
     #include "..\include\validation.h"
 	#include "..\include\profile_creation.h"
@@ -12,17 +20,17 @@
 
 void create_prof_profile()
 {
-	char id[13];
-	char f_name[50];
-	char l_name[50];
-	char age[5];
-	char address1[45];
-	char address2[45];
-	char phonenumber[20];
-	char gender[10];
-	char email[100];
-	char dept[100];
-	char uni[100];
+	char id[number1];
+	char f_name[number3];
+	char l_name[number3];
+	char age[number0];
+	char address1[number3];
+	char address2[number3];
+	char phonenumber[number2];
+	char gender[number1];
+	char email[number4];
+	char dept[number4];
+	char uni[number4];
 	int x=0;
     char ch;
     int num;

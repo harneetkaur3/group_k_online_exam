@@ -10,6 +10,7 @@
 *
 * Contains the following functions:
 * disp_topics all topics
+* create_student_account() create student profile
 * check_req_status() Checks the status of request raised by the student
 * submittest() This function saves the data into file once the exam accomplished
 * modifyanswer() This function modify the anser once student attempts all question he/she can modify answers before submission
@@ -130,6 +131,7 @@ int disp_topics(){
 
 int check_req_status(char *u_id, char *topic)
 {
+	
 	char buffer[1024] ;
     char *record,*line;
 	FILE *rqsts;
@@ -146,6 +148,9 @@ int check_req_status(char *u_id, char *topic)
     	printf("Unable to open a file. \n");
     	exit(EXIT_FAILURE);
     }
+	else if(strcmp(u_id,"9999")==0){
+		return 9;
+	}
 	else{
 		while((line=fgets(buffer,sizeof(buffer),rqsts))!=NULL){
 			record = strtok(line,";");
@@ -519,7 +524,7 @@ char* raiseTestRequest(char *u_id, int topic){
 	else{
 		//strcpy(temp,"0");
 		fprintf(rqsts,"%d,%s,%s,%s,%s\n",request_id,u_id,t_name[topic],rtrim(instructor_id[topic]),temp[topic]);
-		printf("request raised");
+		printf("\nrequest raised\n\n");
 		return "Request Raised";
 		
 	}
@@ -547,30 +552,21 @@ char* raiseTestRequest(char *u_id, int topic){
 int student(char *u_id){
 	int chh;
 	do{
-		printf("\n                Press 1 Test detail......\n");
-		printf("                Press 2 Edit personal profile\n");
-		printf("                Press 3 ________________\n");
-		printf("                Press 4 Start test\n");
-		printf("                Press 5 Raise a test request\n");
-		printf("                Press 6 Change password\n");
-		printf("                Press 7 to Log Out!!\n");
+		printf("\n              Press 1 Edit personal profile\n");
+		printf("                Press 2 Start test\n");
+		printf("                Press 3 Raise a test request\n");
+		printf("                Press 4 Change password\n");
+		printf("                Press 5 to view result\n");
+		printf("                Press 6 to Log Out!!\n");
 		scanf("%d",&chh);
 		switch(chh){
 			case 1:{
-				
-				break;
-			}
-			case 2:{
 				char dcsn[6];
 				editProfile(u_id);
 				
 				break;
 			}
-			case 3:{
-				
-				break;
-			}
-			case 4:{
+			case 2:{
 				int tp, topic;
 				topic=disp_topics();
 				int i=check_req_status(u_id,t_name[topic]);
@@ -585,7 +581,7 @@ int student(char *u_id){
 				
 				break;
 			}
-			case 5:{
+			case 3:{
 				int tp, topic;
 				topic=disp_topics();
 				if(topic>0){
@@ -596,7 +592,7 @@ int student(char *u_id){
 				
 				break;
 			}
-			case 6:{
+			case 4:{
 				char pwd[15];
 				char id1[11];
 			    char new_pwd[15];
@@ -613,7 +609,11 @@ int student(char *u_id){
     			puts(user_status);
 				break;
 			}
-			case 7:{
+			case 5:{
+				
+				break;
+			}
+			case 6:{
 				printf("\n Thank you! Have Good Day....");
 				return 1;
 			}
@@ -622,6 +622,6 @@ int student(char *u_id){
 				break;
 			}
 		}
-	}while(chh!=7);
+	}while(chh!=6);
 }
 

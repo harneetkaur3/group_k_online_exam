@@ -49,6 +49,8 @@
 #define ANSWER "ANSWER: "
 #define separator "\n------------------------------- \n"
 #define NUMBER_QUESTION 30
+#define number0 5
+#define number1 150
 
 
 /**
@@ -137,20 +139,18 @@ struct QUESTION{
 	char option2[length];
 	char option3[length];
 	char option4[length];
-	char ans[2];
+	char ans[number0];
 };
 
 /**
-* \fn void add_question(char* exam, char *u_id)
-* \brief This function add a question into the file questions.csv. 
-* It takes the name of the exam to which question belongs, and the student ID as the parameters.
+* \brief  void add_question(char* exam, char *u_id)
 *
 *
 *	Authors:
 *				
 *				@author Esraa Abujayyab
 *
-* 
+* Function dipslay all the topics from the topics.csv file and show to the user
 *
 *
 * \return No return Just displays the message after submission
@@ -162,7 +162,7 @@ void add_question(char* exam, char *u_id){
 
 
 	q->id=generate_Id("questions.csv");
-	
+	//printf("%d",id);
 	char *topic3=disp_topics1(u_id);
 	printf("%s",topic3);
 	int x=0;
@@ -173,36 +173,38 @@ void add_question(char* exam, char *u_id){
 		x=notempty(q->question);
 	}while(x==0);
 	
-	
+	//fputs(QUESTIONs, fPtr);
+	//fputs(q->question, fPtr);
 
 	char op1[30];
 	do{
-		printf("\nEnter the first option - 1. ");
+		printf("\nEnter the first option - A. ");
 		gets(op1);
 		x=notempty(op1);
 	}while(x==0);
-
+	//fgets(q->option1, length, stdin);
+	//fputs(O1, fPtr);
+	//fputs(q->option1, fPtr);
 	char op2[30];
 	do{
-		printf("\nEnter the second option - 2. ");
+		printf("\nEnter the second option - B. ");
 		gets(op2);
 		x=notempty(op2);
 	}while(x==0);
 	do{
-		printf("\nEnter the third option - 3. ");
+		printf("\nEnter the third option - C. ");
 		gets(q->option3);
 		x=notempty(q->option3);
 	}while(x==0);
 	do{
-		printf("\nEnter the fourth option - 4. ");
+		printf("\nEnter the fourth option - D. ");
 		gets(q->option4);
 		x=notempty(q->option4);
 	}while(x==0);
-	
-	while(strlen(q->ans) != 2){
-		printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
-		scanf("%s",q->ans);
-	}	
+	while (strlen(q->ans) != 2){
+	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
+	scanf("%s",q->ans);
+	}
 	
 	FILE *qtn;
 	qtn = fopen("questions.csv","a");
@@ -211,17 +213,12 @@ void add_question(char* exam, char *u_id){
 		exit(EXIT_FAILURE);
 	}
 	else{
-	
+		//printf("%d,%s,%s,%s,%s,%s,%s,%s,%s",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
 		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
 		printf("\nQuestion added successfully \n" );
 		fclose(qtn);
 	}
 } 
-
-
-
-
-
 
 
 
@@ -241,15 +238,15 @@ struct request{
 
 struct questions
 	{
-		char q_id[4];
-		char sub[25];
-		char question[150];
-		char op1[30];
-		char op2[30];
-		char op3[30];
-		char op4[30];
-		char answer[4];
-		char reslt[5];
+		char q_id[number0];
+		char sub[range];
+		char question[number1];
+		char op1[range];
+		char op2[range];
+		char op3[range];
+		char op4[range];
+		char answer[number0];
+		char reslt[number0];
 	};
 
 
@@ -705,6 +702,7 @@ void allowstudent(char *professorid){
 *
 */
 
+
 void mark_questions_and_display_results(char *u_id,char *topic, char *stu_id){
 
 struct question1
@@ -817,11 +815,12 @@ struct question1
 * 
 *
 *
-* \return No return Just displays the message after submition
+* \return No return just prints the results.
 *
 */
 
-void show_exam_results(){
+
+int show_exam_results(){
 
 	char s;
 	
@@ -842,6 +841,8 @@ void show_exam_results(){
 	
 	fclose(fPtr);
 	
+	
+	return 0;
 }
 
 
