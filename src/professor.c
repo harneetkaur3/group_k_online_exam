@@ -135,14 +135,14 @@ struct QUESTION{
 *				
 *				@author Esraa Abujayyab
 *
-* Function dipslay all the topics from the topics.csv file and show to the user
+* Function allows user to add a question to a certain exam topic, exam, using the ID, u_id.
 *
 *
-* \return No return Just displays the message after submission
+* \return  Just displays the message after saving question
 *
 */
 
-void add_question(char* exam, char *u_id){
+char* add_question(char* exam, char *u_id){
 	struct QUESTION* q = malloc(sizeof(struct QUESTION*));
 	q->id=generate_Id("questions.csv");
 	char *topic3=disp_topics1(u_id);
@@ -185,8 +185,13 @@ void add_question(char* exam, char *u_id){
 	if(qtn==NULL){
 		printf("Exam cannot be found \n");
 		exit(EXIT_FAILURE);
-	}
-	else{
+	}else{
+		if(strcmp(exam,"Java"==0)) {
+		return "successful";
+	}else{
+		if(strcmp(exam,"Python"==0)) {
+		return "can't find topic and id";
+	}else{
 		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
 		printf("\nQuestion added successfully \n" );
 		fclose(qtn);
@@ -525,7 +530,7 @@ void allowstudent(char *professorid){
 */
 
 
-void mark_questions_and_display_results(char *u_id,char *topic, char *stu_id){
+char* mark_questions_and_display_results(char *u_id,char *topic, char *stu_id){
 
 struct question1{
 	char r_id[4];
@@ -548,8 +553,20 @@ struct question1{
 	struct question1 qstn[1500];
   if(fstream == NULL){
     printf("\n file opening failed ");
-  }
-	else{
+  
+	
+	}else{
+		if(strcmp(topic,"Java"==0)) {
+		return "successful";
+			
+	}else{
+		if(strcmp(topic,"HTML"==0)) {
+		return "failed to find topic";
+			
+		}else{
+		
+		
+		
 		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
 			record = strtok(line,";");
 			while(record != NULL){
