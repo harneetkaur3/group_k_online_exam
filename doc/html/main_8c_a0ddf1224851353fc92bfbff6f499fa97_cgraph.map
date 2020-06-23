@@ -1,0 +1,34 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="The main function which distributes various tasks to other functions." alt="" coords="5,741,56,768"/>
+<area shape="rect" id="node2" href="$profile__creation_8c.html#a258e26660ce639c6535aadcae79c4bdc" title=" " alt="" coords="244,16,371,42"/>
+<area shape="rect" id="node7" href="$profile__creation_8c.html#a848a2901e870e9585a07d6c3759e48eb" title=" " alt="" coords="227,66,388,93"/>
+<area shape="rect" id="node10" href="$main_8c.html#af5978fab9fa6dd4ced1c3a8ab1251f7b" title="Get or scan the value from the console screen." alt="" coords="114,842,169,869"/>
+<area shape="rect" id="node11" href="$user__maintainance_8c.html#a806d3ac009aabe765858501cab638a7e" title="Checks the login credentials from database file to assign the user type: Admin,Student,..." alt="" coords="117,893,166,920"/>
+<area shape="rect" id="node12" href="$professor_8c.html#a8f993fcbe7bfbdfee7b55e3248d0966c" title="This function gives the various choices to the professor to perform different functions." alt="" coords="104,421,179,448"/>
+<area shape="rect" id="node16" href="$validation_8c.html#acdfc0f8ee81107535c88f945cbfeb305" title="Removes the extra spacing Authors:" alt="" coords="474,690,522,717"/>
+<area shape="rect" id="node26" href="$student_8c.html#a29d0d3615516c80ec72d19d57803a0a5" title="This function gives vaious options to the student." alt="" coords="109,792,174,818"/>
+<area shape="rect" id="node3" href="$validation_8c.html#afb2bbfb20e6bc24bd2067826954de37e" title="This function generate a unique serial number for a file to insert the data." alt="" coords="787,488,876,514"/>
+<area shape="rect" id="node4" href="$validation_8c.html#a41a17a1b0e1193a6527547bc81dd9080" title="Validating that string is empty or not Authors:" alt="" coords="460,218,536,245"/>
+<area shape="rect" id="node5" href="$validation_8c.html#a3b3f4c2e58ff48da389b53b28a3548d2" title="Validating the given string." alt="" coords="455,66,541,93"/>
+<area shape="rect" id="node6" href="$validation_8c.html#abe0a185859fac04fb0b08df384b15cf7" title="Validating the Phone number." alt="" coords="453,117,543,144"/>
+<area shape="rect" id="node8" href="$user__maintainance_8c.html#a7a9614c4401e1e69e2e9e11c496f7f19" title="This function gets a record form the file to update and call the function update file." alt="" coords="468,168,528,194"/>
+<area shape="rect" id="node9" href="$user__maintainance_8c.html#a717942a0b83513aa4bf81d0e29ae58d7" title="This Function updates the file user_profiles.csv once user edit their profile." alt="" coords="631,168,715,194"/>
+<area shape="rect" id="node13" href="$professor_8c.html#a3f3a460b47e05ab45c1edb636667f523" title="void add_question(char* exam, char *u_id)" alt="" coords="258,320,357,346"/>
+<area shape="rect" id="node14" href="$professor_8c.html#a0dc33a481cdd26f98e7ec599fbf9bc3a" title="int disp_topics() function display the topics" alt="" coords="451,370,545,397"/>
+<area shape="rect" id="node15" href="$professor_8c.html#a1386a0ec7a89fb47e89919609b476b2d" title="This function a gets the data from requests.csv and update the allow the student to give the exam." alt="" coords="260,589,355,616"/>
+<area shape="rect" id="node17" href="$user__maintainance_8c.html#a55e090c3298a9eaf4373d32e7ffed401" title=" " alt="" coords="247,690,368,717"/>
+<area shape="rect" id="node18" href="$exam_8c.html#aa7561cd2565c7d466ed21a713e737aa6" title="Get or scan the value from the console screen to add a topic." alt="" coords="608,448,739,474"/>
+<area shape="rect" id="node19" href="$professor_8c.html#a2d917b0f4e2417d07cd72ae575971394" title=" " alt="" coords="253,117,362,144"/>
+<area shape="rect" id="node20" href="$exam_8c.html#af4961ec273a1b86165eaba381d00643b" title="Get or scan the value from the console screen to edit a topic." alt="" coords="266,472,349,498"/>
+<area shape="rect" id="node22" href="$user__maintainance_8c.html#aeaa5582598538bbc096c1abe4d90b688" title="Allows the professor to modify employee details." alt="" coords="268,168,347,194"/>
+<area shape="rect" id="node23" href="$professor_8c.html#a904a26ac075c2e2bfa396c58cb7df490" title="This function a gets the older data from the questions.csv and update it." alt="" coords="260,269,355,296"/>
+<area shape="rect" id="node25" href="$professor_8c.html#a834fb8afbc7e3a37a2d635dbaf273580" title="This function generate the result for a particular student." alt="" coords="236,523,379,564"/>
+<area shape="rect" id="node21" href="$exam_8c.html#aca72ea9e29e2584b68786c87e31b93e2" title=" " alt="" coords="448,472,548,498"/>
+<area shape="rect" id="node24" href="$professor_8c.html#ad9c67d5c636cff86be19f9b227b9e11c" title=" " alt="" coords="436,269,560,296"/>
+<area shape="rect" id="node27" href="$student_8c.html#a66e4e3c262f2a9b1367dd5eb6aacbf12" title="int check_req_status(char *u_id, char *topic) function checks whether a user approved or not" alt="" coords="245,994,370,1021"/>
+<area shape="rect" id="node28" href="$student_8c.html#a7a593570226601ea11067c95d3951c03" title="int disp_topics() function display the topics" alt="" coords="263,893,351,920"/>
+<area shape="rect" id="node29" href="$student_8c.html#aae0ce661714432ca7c805285f4e7ce85" title="This function raises a new request to get approval for a new exam." alt="" coords="246,842,369,869"/>
+<area shape="rect" id="node30" href="$student_8c.html#ade0516c79a156b84fd0c961b51133d4c" title="This function starts the test on the student screen." alt="" coords="269,944,346,970"/>
+<area shape="rect" id="node31" href="$student_8c.html#a14e6e2583ce1107efc50b3f51ec2470f" title="This function modify the anser once student attempts all question he/she can modify answers before su..." alt="" coords="444,944,552,970"/>
+<area shape="rect" id="node32" href="$student_8c.html#a91b3dd54097e4b33cf58646394b36444" title="This function saves the data into file once the exam accomplished." alt="" coords="628,893,719,920"/>
+</map>

@@ -53,9 +53,9 @@ int generate_Id(char *f_name)
 	int i=0;
 	rqsts = fopen(f_name,"r");
 	if(rqsts == NULL){
-    	printf("Unable to open a file. \n");
-    	exit(EXIT_FAILURE);
-    }
+		printf("Unable to open a file. \n");
+		exit(EXIT_FAILURE);
+  }
 	else{
 		while((line=fgets(buffer,sizeof(buffer),rqsts))!=NULL){
 			record = strtok(line,";");
@@ -85,16 +85,12 @@ int generate_Id(char *f_name)
 				ptr = strtok(NULL, ",");
 				record = strtok(NULL,";");
 			}
-			++i; 
-			
+			++i; 			
 		}
 		fclose(rqsts);
 	}
 	return (max+1);
 }
-
-
-
 /**
 * \brief Removes the extra spacing
 *	Authors:

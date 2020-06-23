@@ -1,0 +1,7 @@
+<map id="modify_answer" name="modify_answer">
+<area shape="rect" id="node1" title="This function modify the anser once student attempts all question he/she can modify answers before su..." alt="" coords="411,31,519,57"/>
+<area shape="rect" id="node2" href="$student_8c.html#ade0516c79a156b84fd0c961b51133d4c" title="This function starts the test on the student screen." alt="" coords="285,31,363,57"/>
+<area shape="rect" id="node3" href="$student_8c.html#a29d0d3615516c80ec72d19d57803a0a5" title="This function gives vaious options to the student." alt="" coords="172,31,237,57"/>
+<area shape="rect" id="node4" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="The main function which distributes various tasks to other functions." alt="" coords="39,5,90,32"/>
+<area shape="rect" id="node5" href="$_student___account___setup_8c.html#aff096c2e84102f8c68264edc30e01833" title=" " alt="" coords="5,56,124,83"/>
+</map>

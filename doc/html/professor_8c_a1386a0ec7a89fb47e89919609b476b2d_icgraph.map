@@ -1,0 +1,5 @@
+<map id="allowstudent" name="allowstudent">
+<area shape="rect" id="node1" title="This function a gets the data from requests.csv and update the allow the student to give the exam." alt="" coords="227,5,321,32"/>
+<area shape="rect" id="node2" href="$professor_8c.html#a8f993fcbe7bfbdfee7b55e3248d0966c" title="This function gives the various choices to the professor to perform different functions." alt="" coords="104,5,179,32"/>
+<area shape="rect" id="node3" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="The main function which distributes various tasks to other functions." alt="" coords="5,5,56,32"/>
+</map>

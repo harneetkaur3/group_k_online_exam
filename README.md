@@ -18,6 +18,12 @@ It can be adapted and used by universities, schools, and colleges to conduct onl
 Installation steps are mentioned in 
 Link will be here.....................
 
+#Authors
+-Harneet Kaur -harneetkaur3@cmail.carleton.ca
+- 
+-
+-
+
 # Usage
 
 To run, you must first install it. Then you can follow instructions mentioned in

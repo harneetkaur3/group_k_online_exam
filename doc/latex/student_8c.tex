@@ -1,0 +1,344 @@
+\hypertarget{student_8c}{}\doxysection{student.\+c File Reference}
+\label{student_8c}\index{student.c@{student.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/user\+\_\+maintainance.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/validation.\+h\char`\"{}}\newline
+Include dependency graph for student.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structquestions}{questions}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{student_8c_a7a593570226601ea11067c95d3951c03}{disp\+\_\+topics}} ()
+\begin{DoxyCompactList}\small\item\em int \mbox{\hyperlink{student_8c_a7a593570226601ea11067c95d3951c03}{disp\+\_\+topics()}} function display the topics \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12}{check\+\_\+req\+\_\+status}} (char $\ast$u\+\_\+id, char $\ast$topic)
+\begin{DoxyCompactList}\small\item\em int \mbox{\hyperlink{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12}{check\+\_\+req\+\_\+status(char $\ast$u\+\_\+id, char $\ast$topic)}} function checks whether a user approved or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{student_8c_a91b3dd54097e4b33cf58646394b36444}{submit\+\_\+test}} (char $\ast$u\+\_\+id, int x, struct \mbox{\hyperlink{structquestions}{questions}} rslt\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function saves the data into file once the exam accomplished. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{student_8c_a14e6e2583ce1107efc50b3f51ec2470f}{modify\+\_\+answer}} (char $\ast$u\+\_\+id, int x, struct \mbox{\hyperlink{structquestions}{questions}} rslt\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function modify the anser once student attempts all question he/she can modify answers before submission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{student_8c_ade0516c79a156b84fd0c961b51133d4c}{start\+\_\+test}} (char $\ast$u\+\_\+id, char $\ast$topic)
+\begin{DoxyCompactList}\small\item\em This function starts the test on the student screen. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{student_8c_aae0ce661714432ca7c805285f4e7ce85}{raise\+Test\+Request}} (char $\ast$u\+\_\+id, int topic)
+\begin{DoxyCompactList}\small\item\em This function raises a new request to get approval for a new exam. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{student_8c_a29d0d3615516c80ec72d19d57803a0a5}{student}} (char $\ast$u\+\_\+id)
+\begin{DoxyCompactList}\small\item\em This function gives vaious options to the student. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{student_8c_aa59a62995c900e39d6a259be0f3ab176}{t\+\_\+id}} \mbox{[}2000\mbox{]}\mbox{[}5\mbox{]}
+\item 
+char \mbox{\hyperlink{student_8c_a89636d98a19f2e1f96568cbe3306af3b}{t\+\_\+name}} \mbox{[}2000\mbox{]}\mbox{[}20\mbox{]}
+\item 
+char \mbox{\hyperlink{student_8c_a181f630aa10bc86d3c014e2db07e1b28}{instructor\+\_\+id}} \mbox{[}2000\mbox{]}\mbox{[}5\mbox{]}
+\item 
+char \mbox{\hyperlink{student_8c_a84e5aaa5fed4249651e67cbc5b36ca49}{temp}} \mbox{[}200\mbox{]}\mbox{[}5\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur
+\end{DoxyAuthor}
+Contains the following functions\+: disp\+\_\+topics all topics \mbox{\hyperlink{profile__creation_8c_a848a2901e870e9585a07d6c3759e48eb}{create\+\_\+student\+\_\+account()}} create student profile \mbox{\hyperlink{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12}{check\+\_\+req\+\_\+status()}} Checks the status of request raised by the student submittest() This function saves the data into file once the exam accomplished modifyanswer() This function modify the anser once student attempts all question he/she can modify answers before submission starttest() This function starts the test on the student screen raisetestrequest() This function raises a new request to get approval for a new exam \mbox{\hyperlink{student_8c_a29d0d3615516c80ec72d19d57803a0a5}{student()}} This function gives vaious options to the student 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12}\label{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12}} 
+\index{student.c@{student.c}!check\_req\_status@{check\_req\_status}}
+\index{check\_req\_status@{check\_req\_status}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{check\_req\_status()}{check\_req\_status()}}
+{\footnotesize\ttfamily int check\+\_\+req\+\_\+status (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id,  }\item[{char $\ast$}]{topic }\end{DoxyParamCaption})}
+
+
+
+int \mbox{\hyperlink{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12}{check\+\_\+req\+\_\+status(char $\ast$u\+\_\+id, char $\ast$topic)}} function checks whether a user approved or not 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+Function open the file of requests.\+csv
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$u\+\_\+id gives the id of logged in user \\
+\hline
+\mbox{\texttt{ in}}  & {\em char} & $\ast$topic selected topic by the student\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer\+: returns status 0-\/not approved 1-\/Approved 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_a66e4e3c262f2a9b1367dd5eb6aacbf12_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{student_8c_a7a593570226601ea11067c95d3951c03}\label{student_8c_a7a593570226601ea11067c95d3951c03}} 
+\index{student.c@{student.c}!disp\_topics@{disp\_topics}}
+\index{disp\_topics@{disp\_topics}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{disp\_topics()}{disp\_topics()}}
+{\footnotesize\ttfamily int disp\+\_\+topics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+int \mbox{\hyperlink{student_8c_a7a593570226601ea11067c95d3951c03}{disp\+\_\+topics()}} function display the topics 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+Function dipslay all the topics from the topics.\+csv file and show to the user
+
+\begin{DoxyReturn}{Returns}
+Topic\+: Selected index of topic is returned to the calling function to start the test 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_a7a593570226601ea11067c95d3951c03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{student_8c_a14e6e2583ce1107efc50b3f51ec2470f}\label{student_8c_a14e6e2583ce1107efc50b3f51ec2470f}} 
+\index{student.c@{student.c}!modify\_answer@{modify\_answer}}
+\index{modify\_answer@{modify\_answer}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{modify\_answer()}{modify\_answer()}}
+{\footnotesize\ttfamily modify\+\_\+answer (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id,  }\item[{int}]{x,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}}}]{rslt\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function modify the anser once student attempts all question he/she can modify answers before submission. 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$u\+\_\+id gives the id of logged in user \\
+\hline
+\mbox{\texttt{ in}}  & {\em int} & x size of structure array \\
+\hline
+\mbox{\texttt{ in}}  & {\em struct} & questions rslt\mbox{[}\mbox{]} array of all questions attempted by the student\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int returns 1 if succesfull else 0 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_a14e6e2583ce1107efc50b3f51ec2470f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_a14e6e2583ce1107efc50b3f51ec2470f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{student_8c_aae0ce661714432ca7c805285f4e7ce85}\label{student_8c_aae0ce661714432ca7c805285f4e7ce85}} 
+\index{student.c@{student.c}!raiseTestRequest@{raiseTestRequest}}
+\index{raiseTestRequest@{raiseTestRequest}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{raiseTestRequest()}{raiseTestRequest()}}
+{\footnotesize\ttfamily char $\ast$ raise\+Test\+Request (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id,  }\item[{int}]{topic }\end{DoxyParamCaption})}
+
+
+
+This function raises a new request to get approval for a new exam. 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$u\+\_\+id gives the id of logged in user \\
+\hline
+\mbox{\texttt{ in}}  & {\em char} & $\ast$ topic topic name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+charater wether the request raised or not 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{student_8c_aae0ce661714432ca7c805285f4e7ce85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_aae0ce661714432ca7c805285f4e7ce85_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{student_8c_ade0516c79a156b84fd0c961b51133d4c}\label{student_8c_ade0516c79a156b84fd0c961b51133d4c}} 
+\index{student.c@{student.c}!start\_test@{start\_test}}
+\index{start\_test@{start\_test}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{start\_test()}{start\_test()}}
+{\footnotesize\ttfamily start\+\_\+test (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id,  }\item[{char $\ast$}]{topic }\end{DoxyParamCaption})}
+
+
+
+This function starts the test on the student screen. 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$u\+\_\+id gives the id of logged in user \\
+\hline
+\mbox{\texttt{ in}}  & {\em char} & $\ast$ topic topic name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_ade0516c79a156b84fd0c961b51133d4c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{student_8c_ade0516c79a156b84fd0c961b51133d4c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{student_8c_a29d0d3615516c80ec72d19d57803a0a5}\label{student_8c_a29d0d3615516c80ec72d19d57803a0a5}} 
+\index{student.c@{student.c}!student@{student}}
+\index{student@{student}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{student()}{student()}}
+{\footnotesize\ttfamily int student (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+This function gives vaious options to the student. 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$u\+\_\+id gives the id of logged in user\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer after succesfull execution return 1 otherwise 0 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_a29d0d3615516c80ec72d19d57803a0a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{student_8c_a29d0d3615516c80ec72d19d57803a0a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{student_8c_a91b3dd54097e4b33cf58646394b36444}\label{student_8c_a91b3dd54097e4b33cf58646394b36444}} 
+\index{student.c@{student.c}!submit\_test@{submit\_test}}
+\index{submit\_test@{submit\_test}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{submit\_test()}{submit\_test()}}
+{\footnotesize\ttfamily submit\+\_\+test (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id,  }\item[{int}]{x,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}}}]{rslt\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function saves the data into file once the exam accomplished. 
+
+\begin{DoxyAuthor}{Author}
+\+: Harneet Kaur
+\end{DoxyAuthor}
+Function open the file of requests.\+csv
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$u\+\_\+id gives the id of logged in user \\
+\hline
+\mbox{\texttt{ in}}  & {\em int} & x size of structure array \\
+\hline
+\mbox{\texttt{ in}}  & {\em struct} & questions rslt\mbox{[}\mbox{]} array of all questions attempted by the student\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No return type 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{student_8c_a91b3dd54097e4b33cf58646394b36444_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{student_8c_a91b3dd54097e4b33cf58646394b36444_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{student_8c_a181f630aa10bc86d3c014e2db07e1b28}\label{student_8c_a181f630aa10bc86d3c014e2db07e1b28}} 
+\index{student.c@{student.c}!instructor\_id@{instructor\_id}}
+\index{instructor\_id@{instructor\_id}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{instructor\_id}{instructor\_id}}
+{\footnotesize\ttfamily char instructor\+\_\+id\mbox{[}2000\mbox{]}\mbox{[}5\mbox{]}}
+
+\mbox{\Hypertarget{student_8c_aa59a62995c900e39d6a259be0f3ab176}\label{student_8c_aa59a62995c900e39d6a259be0f3ab176}} 
+\index{student.c@{student.c}!t\_id@{t\_id}}
+\index{t\_id@{t\_id}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{t\_id}{t\_id}}
+{\footnotesize\ttfamily char t\+\_\+id\mbox{[}2000\mbox{]}\mbox{[}5\mbox{]}}
+
+\mbox{\Hypertarget{student_8c_a89636d98a19f2e1f96568cbe3306af3b}\label{student_8c_a89636d98a19f2e1f96568cbe3306af3b}} 
+\index{student.c@{student.c}!t\_name@{t\_name}}
+\index{t\_name@{t\_name}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{t\_name}{t\_name}}
+{\footnotesize\ttfamily char t\+\_\+name\mbox{[}2000\mbox{]}\mbox{[}20\mbox{]}}
+
+\mbox{\Hypertarget{student_8c_a84e5aaa5fed4249651e67cbc5b36ca49}\label{student_8c_a84e5aaa5fed4249651e67cbc5b36ca49}} 
+\index{student.c@{student.c}!temp@{temp}}
+\index{temp@{temp}!student.c@{student.c}}
+\doxysubsubsection{\texorpdfstring{temp}{temp}}
+{\footnotesize\ttfamily char temp\mbox{[}200\mbox{]}\mbox{[}5\mbox{]}}
+

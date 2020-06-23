@@ -1,4 +1,0 @@
-1 vari Admin
-2 abc Student
-3 bb Professor
-4 aa Professor

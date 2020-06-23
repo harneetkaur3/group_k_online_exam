@@ -1,0 +1,187 @@
+\hypertarget{validation_8c}{}\doxysection{validation.\+c File Reference}
+\label{validation_8c}\index{validation.c@{validation.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+Include dependency graph for validation.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{validation_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{validation_8c_afb2bbfb20e6bc24bd2067826954de37e}{generate\+\_\+\+Id}} (char $\ast$f\+\_\+name)
+\begin{DoxyCompactList}\small\item\em This function generate a unique serial number for a file to insert the data. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{validation_8c_acdfc0f8ee81107535c88f945cbfeb305}{rtrim}} (char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Removes the extra spacing Authors\+: \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{validation_8c_a41a17a1b0e1193a6527547bc81dd9080}{notempty}} (char num\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Validating that string is empty or not Authors\+: \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{validation_8c_a3b3f4c2e58ff48da389b53b28a3548d2}{valid\+\_\+email}} (char test\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Validating the given string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{validation_8c_abe0a185859fac04fb0b08df384b15cf7}{valid\+\_\+phone}} (char phone\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Validating the Phone number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{validation_8c_afb2bbfb20e6bc24bd2067826954de37e}\label{validation_8c_afb2bbfb20e6bc24bd2067826954de37e}} 
+\index{validation.c@{validation.c}!generate\_Id@{generate\_Id}}
+\index{generate\_Id@{generate\_Id}!validation.c@{validation.c}}
+\doxysubsubsection{\texorpdfstring{generate\_Id()}{generate\_Id()}}
+{\footnotesize\ttfamily int generate\+\_\+\+Id (\begin{DoxyParamCaption}\item[{char $\ast$}]{f\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+This function generate a unique serial number for a file to insert the data. 
+
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur
+\end{DoxyAuthor}
+This function counts all the available record in the file and increment that value with 1.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$f\+\_\+name accpts the .csv file from the calling function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uniqueid 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{validation_8c_afb2bbfb20e6bc24bd2067826954de37e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{validation_8c_a41a17a1b0e1193a6527547bc81dd9080}\label{validation_8c_a41a17a1b0e1193a6527547bc81dd9080}} 
+\index{validation.c@{validation.c}!notempty@{notempty}}
+\index{notempty@{notempty}!validation.c@{validation.c}}
+\doxysubsubsection{\texorpdfstring{notempty()}{notempty()}}
+{\footnotesize\ttfamily int notempty (\begin{DoxyParamCaption}\item[{char}]{num\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Validating that string is empty or not Authors\+: 
+
+\begin{DoxyAuthor}{Author}
+Harneet Kaur
+\end{DoxyAuthor}
+Given string by the user is validated that it is empty or not
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & num\mbox{[}\mbox{]} Array of characters given by the user\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer\+: 0\+: For Error of the invalid character 1\+: Positive case for valid character 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{validation_8c_a41a17a1b0e1193a6527547bc81dd9080_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{validation_8c_acdfc0f8ee81107535c88f945cbfeb305}\label{validation_8c_acdfc0f8ee81107535c88f945cbfeb305}} 
+\index{validation.c@{validation.c}!rtrim@{rtrim}}
+\index{rtrim@{rtrim}!validation.c@{validation.c}}
+\doxysubsubsection{\texorpdfstring{rtrim()}{rtrim()}}
+{\footnotesize\ttfamily char$\ast$ rtrim (\begin{DoxyParamCaption}\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Removes the extra spacing Authors\+: 
+
+\begin{DoxyAuthor}{Author}
+Harneet Kaur
+\end{DoxyAuthor}
+It will delete or trim the extra space in the array of characters by calling this function
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & $\ast$s Array of Character Pointer, pointing to the character of size char\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+trimed value\+: 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{validation_8c_acdfc0f8ee81107535c88f945cbfeb305_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{validation_8c_a3b3f4c2e58ff48da389b53b28a3548d2}\label{validation_8c_a3b3f4c2e58ff48da389b53b28a3548d2}} 
+\index{validation.c@{validation.c}!valid\_email@{valid\_email}}
+\index{valid\_email@{valid\_email}!validation.c@{validation.c}}
+\doxysubsubsection{\texorpdfstring{valid\_email()}{valid\_email()}}
+{\footnotesize\ttfamily int valid\+\_\+email (\begin{DoxyParamCaption}\item[{char}]{test\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Validating the given string. 
+
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur
+\end{DoxyAuthor}
+Given string by the user is validated that email is having with \textquotesingle{}@\textquotesingle{} and \textquotesingle{}.\textquotesingle{}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & test\mbox{[}\mbox{]} Array of characters given by the user\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer\+: 0\+: For Error of the invalid email 1\+: Positive case for valid email 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{validation_8c_a3b3f4c2e58ff48da389b53b28a3548d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{validation_8c_abe0a185859fac04fb0b08df384b15cf7}\label{validation_8c_abe0a185859fac04fb0b08df384b15cf7}} 
+\index{validation.c@{validation.c}!valid\_phone@{valid\_phone}}
+\index{valid\_phone@{valid\_phone}!validation.c@{validation.c}}
+\doxysubsubsection{\texorpdfstring{valid\_phone()}{valid\_phone()}}
+{\footnotesize\ttfamily int valid\+\_\+phone (\begin{DoxyParamCaption}\item[{char}]{phone\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Validating the Phone number. 
+
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur
+\end{DoxyAuthor}
+Validating the given array of character that it is of length 10 If not of length 10, gives an invalid message
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em char} & phone\mbox{[}\mbox{]} Array of character pointers\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer\+: 0\+: For Error of the invalid phone number 1\+: Positive case the valid phone number 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{validation_8c_abe0a185859fac04fb0b08df384b15cf7_icgraph}
+\end{center}
+\end{figure}

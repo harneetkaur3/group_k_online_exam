@@ -1,0 +1,212 @@
+\hypertarget{user__maintainance_8c}{}\doxysection{user\+\_\+maintainance.\+c File Reference}
+\label{user__maintainance_8c}\index{user\_maintainance.c@{user\_maintainance.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/validation.\+h\char`\"{}}\newline
+Include dependency graph for user\+\_\+maintainance.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user__maintainance_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structuser}{user}}
+\item 
+struct \mbox{\hyperlink{structprofile1}{profile1}}
+\begin{DoxyCompactList}\small\item\em it would get all the data of a file user\+\_\+profiles to updte particular value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{user__maintainance_8c_a62d748d5186f81531f7f1fb70a262c51}{range}}~10
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{user__maintainance_8c_a55e090c3298a9eaf4373d32e7ffed401}{change\+Password}} (char $\ast$uname, char $\ast$oldpwd, char $\ast$newpwd)
+\item 
+char $\ast$ \mbox{\hyperlink{user__maintainance_8c_a806d3ac009aabe765858501cab638a7e}{login}} (char $\ast$u\+\_\+id, char $\ast$pwd)
+\begin{DoxyCompactList}\small\item\em Checks the login credentials from database file to assign the user type\+: Admin,Student,Professor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user__maintainance_8c_a717942a0b83513aa4bf81d0e29ae58d7}{update\+\_\+file}} (int x, struct \mbox{\hyperlink{structprofile1}{profile1}} pf\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This Function updates the file user\+\_\+profiles.\+csv once user edit their profile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user__maintainance_8c_a7a9614c4401e1e69e2e9e11c496f7f19}{getrow}} (char $\ast$u\+\_\+id, char $\ast$arg\+\_\+type, char $\ast$upadteval)
+\begin{DoxyCompactList}\small\item\em This function gets a record form the file to update and call the function update file. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{user__maintainance_8c_aeaa5582598538bbc096c1abe4d90b688}{edit\+Profile}} (char $\ast$u\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Allows the professor to modify employee details. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur 
+
+Abinav
+\end{DoxyAuthor}
+Contains the following functions\+: change password() to allow the user to change the password \mbox{\hyperlink{user__maintainance_8c_a806d3ac009aabe765858501cab638a7e}{login()}} function to validate and authorize the user Getrow() function gets a record form the file to update and call the function update file Edit\+Profile() Allows the professor to modify employee details 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{user__maintainance_8c_a62d748d5186f81531f7f1fb70a262c51}\label{user__maintainance_8c_a62d748d5186f81531f7f1fb70a262c51}} 
+\index{user\_maintainance.c@{user\_maintainance.c}!range@{range}}
+\index{range@{range}!user\_maintainance.c@{user\_maintainance.c}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily \#define range~10}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{user__maintainance_8c_a55e090c3298a9eaf4373d32e7ffed401}\label{user__maintainance_8c_a55e090c3298a9eaf4373d32e7ffed401}} 
+\index{user\_maintainance.c@{user\_maintainance.c}!changePassword@{changePassword}}
+\index{changePassword@{changePassword}!user\_maintainance.c@{user\_maintainance.c}}
+\doxysubsubsection{\texorpdfstring{changePassword()}{changePassword()}}
+{\footnotesize\ttfamily char$\ast$ change\+Password (\begin{DoxyParamCaption}\item[{char $\ast$}]{uname,  }\item[{char $\ast$}]{oldpwd,  }\item[{char $\ast$}]{newpwd }\end{DoxyParamCaption})}
+
+printf(\char`\"{}\textbackslash{}n\textbackslash{}n\textbackslash{}n\%d\textbackslash{}n\textbackslash{}n\textbackslash{}n\textbackslash{}n\char`\"{},x);Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user__maintainance_8c_a55e090c3298a9eaf4373d32e7ffed401_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{user__maintainance_8c_aeaa5582598538bbc096c1abe4d90b688}\label{user__maintainance_8c_aeaa5582598538bbc096c1abe4d90b688}} 
+\index{user\_maintainance.c@{user\_maintainance.c}!editProfile@{editProfile}}
+\index{editProfile@{editProfile}!user\_maintainance.c@{user\_maintainance.c}}
+\doxysubsubsection{\texorpdfstring{editProfile()}{editProfile()}}
+{\footnotesize\ttfamily char $\ast$ edit\+Profile (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Allows the professor to modify employee details. 
+
+Accesses the user\+\_\+profiles table from database and matches user id User can select the particular files what information he/she wants to update data entry in the file after updation
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em emp\+\_\+id} & employee id whose details to be modified by the admin\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string message for modify employee status 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{user__maintainance_8c_aeaa5582598538bbc096c1abe4d90b688_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user__maintainance_8c_aeaa5582598538bbc096c1abe4d90b688_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{user__maintainance_8c_a7a9614c4401e1e69e2e9e11c496f7f19}\label{user__maintainance_8c_a7a9614c4401e1e69e2e9e11c496f7f19}} 
+\index{user\_maintainance.c@{user\_maintainance.c}!getrow@{getrow}}
+\index{getrow@{getrow}!user\_maintainance.c@{user\_maintainance.c}}
+\doxysubsubsection{\texorpdfstring{getrow()}{getrow()}}
+{\footnotesize\ttfamily void getrow (\begin{DoxyParamCaption}\item[{char $\ast$}]{u\+\_\+id,  }\item[{char $\ast$}]{arg\+\_\+type,  }\item[{char $\ast$}]{upadteval }\end{DoxyParamCaption})}
+
+
+
+This function gets a record form the file to update and call the function update file. 
+
+\textbackslash{}\+Author\+: Harneet Kaur
+
+access the user\+\_\+profiles file
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em U\+\_\+id} & Unique id who logged in \\
+\hline
+\mbox{\texttt{ in}}  & {\em arg\+\_\+type} & which field needs to be update \\
+\hline
+\mbox{\texttt{ in}}  & {\em upadteval} & uprocides the new value \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{user__maintainance_8c_a7a9614c4401e1e69e2e9e11c496f7f19_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user__maintainance_8c_a7a9614c4401e1e69e2e9e11c496f7f19_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{user__maintainance_8c_a806d3ac009aabe765858501cab638a7e}\label{user__maintainance_8c_a806d3ac009aabe765858501cab638a7e}} 
+\index{user\_maintainance.c@{user\_maintainance.c}!login@{login}}
+\index{login@{login}!user\_maintainance.c@{user\_maintainance.c}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily char $\ast$ login (\begin{DoxyParamCaption}\item[{char $\ast$}]{id,  }\item[{char $\ast$}]{pwd }\end{DoxyParamCaption})}
+
+
+
+Checks the login credentials from database file to assign the user type\+: Admin,Student,Professor. 
+
+Author\+: Harneet Kaur
+
+Accesses the login\+\_\+details table from database and matches login credentials provided by the user corresponding to the data entry in the database
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id} & Unique login id for the user \\
+\hline
+\mbox{\texttt{ in}}  & {\em pwd} & Password for the user\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+User\+\_\+\+Type\+: admin, student or professor for successful login Wrong username/password for incorrect login credentials 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{user__maintainance_8c_a806d3ac009aabe765858501cab638a7e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{user__maintainance_8c_a717942a0b83513aa4bf81d0e29ae58d7}\label{user__maintainance_8c_a717942a0b83513aa4bf81d0e29ae58d7}} 
+\index{user\_maintainance.c@{user\_maintainance.c}!update\_file@{update\_file}}
+\index{update\_file@{update\_file}!user\_maintainance.c@{user\_maintainance.c}}
+\doxysubsubsection{\texorpdfstring{update\_file()}{update\_file()}}
+{\footnotesize\ttfamily void update\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{struct \mbox{\hyperlink{structprofile1}{profile1}}}]{pf\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This Function updates the file user\+\_\+profiles.\+csv once user edit their profile. 
+
+Author\+: Harneet Kaur
+
+Accesses the user\+\_\+profiles table from database and matches user id User can select the particular files what information he/she wants to update data entry in the file after updation
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & size of the structure array \\
+\hline
+\mbox{\texttt{ in}}  & {\em pf} & struct f \mbox{\hyperlink{structprofile1}{profile1}} to get all information to update the file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No return type once the file updates it prints that data has been entered 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user__maintainance_8c_a717942a0b83513aa4bf81d0e29ae58d7_icgraph}
+\end{center}
+\end{figure}
