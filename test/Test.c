@@ -91,6 +91,54 @@ int main(int argc, char *argv[])
     	printf("Expected result is it should return string File not Found\n ");
 		printf("\n\nFile not Found\n\n");
     	ASSERT_TEST(check_req_status("9999","Demo1")==9);
+	
+	
+	printf("*********************************TEST 4 for add_question***************************************\n");
+printf("***********************************TEST 1A*****************************************************\n");
+printf("We are first going to input an exitsing u_id and exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
+printf("Expected result: successful message which identicates the question has been created ans saved successfully.\n");
+add_question("Java", 4);
+printf("***********************************TEST 4B*****************************************************\n");
+printf("We are first going to input an exitsing u_id and exam topic. We are going to add a question, four options, two characters representing the correct answer.\n");
+printf("Expected result: keep asking for correct answer until it gets only one character, then a successful message which identicates the question has been created ans saved successfully shall appear.\n");
+add_question("Java", 4);
+printf("***********************************TEST 4C*****************************************************\n");
+printf("We are first going to input an non exitsing u_id and non existing exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
+printf("Expected result: error message.\n");
+add_question("Python", 8);
+printf("***********************************TEST 4D*****************************************************\n");
+printf("We are first going to input an exitsing u_id and non existing exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
+printf("Expected result: error message.\n");
+add_question("Python", 4);
+printf("***********************************TEST 4E*****************************************************\n");
+printf("We are first going to input an non exitsing u_id and existing exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
+printf("Expected result: error message.\n");
+add_question("C", 7);
+
+
+
+
+printf("*********************************TEST 5 for mark_questions_and_display_results***************************************\n");
+printf("***********************************TEST 5A*****************************************************\n");
+printf("We are first going to input an exitsing u_id, an existing topic and an existing stu_id. \n");
+printf("Expected result: Result of student with id 2 in exam Java.\n");
+mark_questions_and_display_results(2, "Java", 4);
+printf("***********************************TEST 5B*****************************************************\n");
+printf("We are first going to input a exitsing u_id, an existing topic and a non existing stu_id. \n");
+printf("Expected result: error message.\n");
+mark_questions_and_display_results(2, "Java", 9);
+printf("***********************************TEST 5C*****************************************************\n");
+printf("We are first going to input an exitsing u_id, a non existing topic and an existing stu_id. \n");
+printf("Expected result: error message.\n");
+mark_questions_and_display_results(2, "HTML", 4);
+printf("***********************************TEST 5D*****************************************************\n");
+printf("We are first going to input a non exitsing u_id, a non existing topic and an existing stu_id. \n");
+printf("Expected result: error message.\n");
+mark_questions_and_display_results(3, "MatLab", 4);
+printf("***********************************TEST 5E*****************************************************\n");
+printf("We are first going to input a non exitsing u_id, a non existing topic and a non existing stu_id. \n");
+printf("Expected result: error message.\n");
+mark_questions_and_display_results(1, "HTML", 5);
 		
     	
     	
