@@ -189,7 +189,7 @@ char* add_question(char* exam, char *u_id){
 		if(strcmp(exam,"Java")==0) {
 		return "successful";}
 
-		if(strcmp(exam,"Python")==0)) {
+		if(strcmp(exam,"Python")==0) {
 		return "can't find topic and id";}
 
 		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
