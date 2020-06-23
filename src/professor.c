@@ -186,10 +186,10 @@ char* add_question(char* exam, char *u_id){
 		printf("Exam cannot be found \n");
 		exit(EXIT_FAILURE);
 	}else{
-		if(strcmp(exam,"Java"==0)) {
+		if(strcmp(exam,"Java")==0) {
 		return "successful";
 	}else{
-		if(strcmp(exam,"Python"==0)) {
+		if(strcmp(exam,"Python")==0)) {
 		return "can't find topic and id";
 	}else{
 		fprintf(qtn,"%d,%s,%s,%s,%s,%s,%s,%s,%s\n",q->id,topic3,q->question,op1,op2,q->option3,q->option4,q->ans,"0");
@@ -556,11 +556,11 @@ struct question1{
   
 	
 	}else{
-		if(strcmp(topic,"Java"==0)) {
+		if(strcmp(topic,"Java")==0) {
 		return "successful";
 			
 	}else{
-		if(strcmp(topic,"HTML"==0)) {
+		if(strcmp(topic,"HTML")==0) {
 		return "failed to find topic";
 			
 		}else{
