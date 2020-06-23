@@ -124,7 +124,7 @@ struct QUESTION{
 	char option2[length];
 	char option3[length];
 	char option4[length];
-	char ans[number0];
+	char ans[30];
 };
 
 /**
@@ -176,7 +176,7 @@ char* add_question(char* exam, char *u_id){
 		gets(q->option4);
 		x=notempty(q->option4);
 	}while(x==0);
-	while (strlen(q->ans) != 2){
+	while (strlen(q->ans) != 1){
 	printf("\nEnter the letter of the correct answer (1, 2, 3 or 4): ");
 	scanf("%s",q->ans);
 	}
