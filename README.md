@@ -16,14 +16,14 @@ It can be adapted and used by universities, schools, and colleges to conduct onl
 # Installation
 
 Installation steps are mentioned in 
- [Intallation manual](https://github.com/harneetkaur3/group_k_online_exam/blob/development/doc/Installation%20file.pdf)
+ [Intallation manual](https://github.com/harneetkaur3/group_k_online_exam/blob/master/doc/Installation%20file.pdf)
 
 
 # Usage
 
 To run, you must first install it. Then you can follow instructions mentioned in
 
- [User manual](https://github.com/harneetkaur3/group_k_online_exam/blob/development/doc/user%20manual.pdf)
+ [User manual](https://github.com/harneetkaur3/group_k_online_exam/blob/master/doc/user%20manual.pdf)
  
 # File Strucutre
 1.	bin: This folder has executable and data file for the Payroll system one input file:
@@ -46,7 +46,7 @@ To run, you must first install it. Then you can follow instructions mentioned in
 
 # For Developers
 
-The developer manual is available [here](https://github.com/harneetkaur3/group_k_online_exam/blob/development/doc/Developers%20Guide.pdf)
+The developer manual is available [here](https://github.com/harneetkaur3/group_k_online_exam/blob/master/doc/Developers%20Guide.pdf)
 # License
 
 This project is licensed under the GPL 2.0 License - see the LICENSE.md file for details
