@@ -96,34 +96,34 @@ int main(int argc, char *argv[])
 	printf("***********************************TEST 4A*****************************************************\n");
 	printf("We are first going to input an exitsing u_id and exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
 	printf("Expected result: successful message which identicates the question has been created ans saved successfully.\n");
-	ASSERT_TEST(strcmp(add_question("Java", 4), "successful")==0);
+	ASSERT_TEST(strcmp(add_question("Java", "4"), "successful")==0);
 	//ASSERT_TEST(1);
 	printf("***********************************TEST 4B*****************************************************\n");
 	printf("We are first going to input an exitsing u_id and exam topic. We are going to add a question, four options, two characters representing the correct answer.\n");
 	printf("Expected result: keep asking for correct answer until it gets only one character, then a successful message which identicates the question has been created ans saved successfully shall appear.\n");
-	ASSERT_TEST(strcmp(add_question("Java", 4), "successful")==0);
+	ASSERT_TEST(strcmp(add_question("Java", "4"), "successful")==0);
 	//ASSERT_TEST(1);
 	printf("***********************************TEST 4C*****************************************************\n");
 	printf("We are first going to input an non exitsing u_id and non existing exam topic. We are going to add a question, four options, one character representing the correct answer.\n");
 	printf("Expected result: error message.\n");
-	ASSERT_TEST(strcmp(add_question("Python", 8), "can't find topic and id")==0);
+	ASSERT_TEST(strcmp(add_question("Python", "8"), "can't find topic and id")==0);
 	//ASSERT_TEST(1);
 	
 	printf("*********************************TEST 5 for mark_questions_and_display_results***************************************\n");
 	printf("***********************************TEST 5A*****************************************************\n");
 	printf("We are first going to input an exitsing u_id, an existing topic and an existing stu_id. \n");
 	printf("Expected result: Result of student with id 2 in exam Java.\n");
-	ASSERT_TEST(strcmp(mark_questions_and_display_results(2, "Java", 4),"successful")==0);
+	ASSERT_TEST(strcmp(mark_questions_and_display_results("2", "Java", "4"),"successful")==0);
 	//ASSERT_TEST(1);
 	printf("***********************************TEST 5C*****************************************************\n");
 	printf("We are first going to input an exitsing u_id, a non existing topic and an existing stu_id. \n");
 	printf("Expected result: error message.\n");
-	ASSERT_TEST(strcmp(mark_questions_and_display_results(2, "HTML", 4),"failed to find topic")==0);
+	ASSERT_TEST(strcmp(mark_questions_and_display_results("2", "HTML", "4"),"failed to find topic")==0);
 	//ASSERT_TEST(1);
 	printf("***********************************TEST 5E*****************************************************\n");
 	printf("We are first going to input a non exitsing u_id, a non existing topic and a non existing stu_id. \n");
 	printf("Expected result: error message.\n");
-	ASSERT_TEST(strcmp(mark_questions_and_display_results(1, "HTML", 5),"failed to find topic")==0);	
+	ASSERT_TEST(strcmp(mark_questions_and_display_results("1", "HTML", "5"),"failed to find topic")==0);	
 	//ASSERT_TEST(1);
 
 
