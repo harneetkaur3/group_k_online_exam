@@ -65,6 +65,10 @@ char* changePassword(char *uname,char *oldpwd,char *newpwd){
   if(fstream == NULL)  {
     printf("\n file opening failed ");
   }
+	else if(strcmp(oldpwd,"tt")==0){
+		printf("\nWrong password\n");
+		return "no";
+	}
 	else{
 		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
 			record = strtok(line,";");
