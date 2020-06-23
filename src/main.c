@@ -3,10 +3,9 @@
 *
 *
 *	Authors:
-				@author Harneet Kaur
+*				@author Harneet Kaur
 				@author Sanjana
 *				@author Esraa Abujayyab
-*				
 *
 *
 * Contains the main function from which different functions
@@ -71,12 +70,10 @@ int getch(void){
 * \brief The main function which distributes various tasks to other functions.
 *
 *
-**	Authors:
-				@author Harneet Kaur
-				@author Sanjana
+*	Authors:
+*				@author Harneet Kaur
+*				@author Sanjana
 *				@author Esraa Abujayyab
-				
-*				
 *
 *
 * Expects a user type from the login function
