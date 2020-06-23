@@ -1,0 +1,10 @@
+<map id="valid_phone" name="valid_phone">
+<area shape="rect" id="node1" title="Validating the Phone number." alt="" coords="556,81,645,108"/>
+<area shape="rect" id="node2" href="$profile__creation_8c.html#a258e26660ce639c6535aadcae79c4bdc" title=" " alt="" coords="172,5,299,32"/>
+<area shape="rect" id="node4" href="$profile__creation_8c.html#a848a2901e870e9585a07d6c3759e48eb" title=" " alt="" coords="347,56,508,83"/>
+<area shape="rect" id="node5" href="$user__maintainance_8c.html#aeaa5582598538bbc096c1abe4d90b688" title="Allows the professor to modify employee details." alt="" coords="388,107,467,133"/>
+<area shape="rect" id="node8" href="$_student___account___setup_8c.html#aff096c2e84102f8c68264edc30e01833" title=" " alt="" coords="5,183,124,209"/>
+<area shape="rect" id="node3" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="The main function which distributes various tasks to other functions." alt="" coords="39,81,90,108"/>
+<area shape="rect" id="node6" href="$professor_8c.html#a8f993fcbe7bfbdfee7b55e3248d0966c" title="This function gives the various choices to the professor to perform different functions." alt="" coords="198,107,273,133"/>
+<area shape="rect" id="node7" href="$student_8c.html#a29d0d3615516c80ec72d19d57803a0a5" title="This function gives vaious options to the student." alt="" coords="203,157,268,184"/>
+</map>

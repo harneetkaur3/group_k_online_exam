@@ -1,0 +1,121 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/user\+\_\+maintainance.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/validation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/student.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/professor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/profile\+\_\+creation.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_a62d748d5186f81531f7f1fb70a262c51}{range}}~5
+\item 
+\#define \mbox{\hyperlink{main_8c_af19d9b8b7dc376b0995a5b80c56bed2d}{id\+\_\+range}}~10
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_af5978fab9fa6dd4ced1c3a8ab1251f7b}{getch}} (void)
+\begin{DoxyCompactList}\small\item\em Get or scan the value from the console screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em The main function which distributes various tasks to other functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur 
+
+Sanjana 
+
+Esraa Abujayyab
+\end{DoxyAuthor}
+Contains the main function from which different functions located in other files are called to perform different tasks assigned for student and Professor based on the user inputs. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8c_af19d9b8b7dc376b0995a5b80c56bed2d}\label{main_8c_af19d9b8b7dc376b0995a5b80c56bed2d}} 
+\index{main.c@{main.c}!id\_range@{id\_range}}
+\index{id\_range@{id\_range}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{id\_range}{id\_range}}
+{\footnotesize\ttfamily \#define id\+\_\+range~10}
+
+\mbox{\Hypertarget{main_8c_a62d748d5186f81531f7f1fb70a262c51}\label{main_8c_a62d748d5186f81531f7f1fb70a262c51}} 
+\index{main.c@{main.c}!range@{range}}
+\index{range@{range}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily \#define range~5}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_af5978fab9fa6dd4ced1c3a8ab1251f7b}\label{main_8c_af5978fab9fa6dd4ced1c3a8ab1251f7b}} 
+\index{main.c@{main.c}!getch@{getch}}
+\index{getch@{getch}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{getch()}{getch()}}
+{\footnotesize\ttfamily int getch (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get or scan the value from the console screen. 
+
+\begin{DoxyVerb}        @author Internet
+                Used and modifed by: Harneet Kaur
+\end{DoxyVerb}
+
+
+Function can be called for any type of user-\/$>$ Admin, Manager, Employee who want to scan the values from console screeen
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{[}void\mbox{]}} & No Arguments will be passed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+User\+\_\+\+Type\+: Integer value \textquotesingle{}ch\textquotesingle{} for all case 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{main_8c_af5978fab9fa6dd4ced1c3a8ab1251f7b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+The main function which distributes various tasks to other functions. 
+
+Authors\+: \begin{DoxyAuthor}{Author}
+Harneet Kaur 
+
+Sanjana 
+
+Esraa Abujayyab
+\end{DoxyAuthor}
+Expects a user type from the login function Based on the functionalities provided for the user type and corresponding user inputs calls the other functions. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}

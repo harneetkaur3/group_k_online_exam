@@ -1,0 +1,8 @@
+0,First Name,Last Name,Age,Address1,Address2,Phonenumber,Gender,Email,department,University,Type
+1,Harneet,Kaur,11,abc,Toronto,1111,Female,a@gmail.com,abc,ee,Admin
+2,varinder,Kumar,12,xyz,Brampton,333,Male,x@gmail.com,xyz,ee,Student
+3,ee,Kumar,22,xyz,Ottawa,44,Male,y@gmail.com,rrr,ee,Professor
+4,ee,Kumar,22,xyz,Ottawa,44,Male,y@gmail.com,rrr,ee,Professor
+5,adssa,ads,ads,ad,sad,1234567890,Male,ww@gmail.com,asdsad,asd,Student 
+6,asda,asd,ads,ads,ads,1234567890,Male,sdf@gmail.com,asd,sdf,Professor 
+7,ad,as,asd,asd,asd,1234567890,Male,dd@gmail.com,aasd,asd,Professor 

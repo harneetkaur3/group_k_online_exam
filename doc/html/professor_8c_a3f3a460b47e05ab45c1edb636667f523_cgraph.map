@@ -1,0 +1,6 @@
+<map id="add_question" name="add_question">
+<area shape="rect" id="node1" title="void add_question(char* exam, char *u_id)" alt="" coords="5,56,104,83"/>
+<area shape="rect" id="node2" href="$professor_8c.html#a0dc33a481cdd26f98e7ec599fbf9bc3a" title="int disp_topics() function display the topics" alt="" coords="152,5,247,32"/>
+<area shape="rect" id="node3" href="$validation_8c.html#afb2bbfb20e6bc24bd2067826954de37e" title="This function generate a unique serial number for a file to insert the data." alt="" coords="155,56,244,83"/>
+<area shape="rect" id="node4" href="$validation_8c.html#a41a17a1b0e1193a6527547bc81dd9080" title="Validating that string is empty or not Authors:" alt="" coords="161,107,237,133"/>
+</map>

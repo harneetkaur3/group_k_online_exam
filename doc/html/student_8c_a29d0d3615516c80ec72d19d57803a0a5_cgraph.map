@@ -1,0 +1,18 @@
+<map id="student" name="student">
+<area shape="rect" id="node1" title="This function gives vaious options to the student." alt="" coords="5,157,71,184"/>
+<area shape="rect" id="node2" href="$user__maintainance_8c.html#a55e090c3298a9eaf4373d32e7ffed401" title=" " alt="" coords="121,5,242,32"/>
+<area shape="rect" id="node3" href="$student_8c.html#a66e4e3c262f2a9b1367dd5eb6aacbf12" title="int check_req_status(char *u_id, char *topic) function checks whether a user approved or not" alt="" coords="119,56,244,83"/>
+<area shape="rect" id="node4" href="$student_8c.html#a7a593570226601ea11067c95d3951c03" title="int disp_topics() function display the topics" alt="" coords="137,107,225,133"/>
+<area shape="rect" id="node5" href="$user__maintainance_8c.html#aeaa5582598538bbc096c1abe4d90b688" title="Allows the professor to modify employee details." alt="" coords="142,157,221,184"/>
+<area shape="rect" id="node11" href="$student_8c.html#aae0ce661714432ca7c805285f4e7ce85" title="This function raises a new request to get approval for a new exam." alt="" coords="120,208,243,235"/>
+<area shape="rect" id="node13" href="$validation_8c.html#acdfc0f8ee81107535c88f945cbfeb305" title="Removes the extra spacing Authors:" alt="" coords="322,259,370,285"/>
+<area shape="rect" id="node14" href="$student_8c.html#ade0516c79a156b84fd0c961b51133d4c" title="This function starts the test on the student screen." alt="" coords="143,309,220,336"/>
+<area shape="rect" id="node6" href="$user__maintainance_8c.html#a7a9614c4401e1e69e2e9e11c496f7f19" title="This function gets a record form the file to update and call the function update file." alt="" coords="316,5,376,32"/>
+<area shape="rect" id="node8" href="$validation_8c.html#a41a17a1b0e1193a6527547bc81dd9080" title="Validating that string is empty or not Authors:" alt="" coords="308,56,384,83"/>
+<area shape="rect" id="node9" href="$validation_8c.html#a3b3f4c2e58ff48da389b53b28a3548d2" title="Validating the given string." alt="" coords="303,107,389,133"/>
+<area shape="rect" id="node10" href="$validation_8c.html#abe0a185859fac04fb0b08df384b15cf7" title="Validating the Phone number." alt="" coords="301,157,391,184"/>
+<area shape="rect" id="node7" href="$user__maintainance_8c.html#a717942a0b83513aa4bf81d0e29ae58d7" title="This Function updates the file user_profiles.csv once user edit their profile." alt="" coords="451,5,535,32"/>
+<area shape="rect" id="node12" href="$validation_8c.html#afb2bbfb20e6bc24bd2067826954de37e" title="This function generate a unique serial number for a file to insert the data." alt="" coords="587,309,676,336"/>
+<area shape="rect" id="node15" href="$student_8c.html#a14e6e2583ce1107efc50b3f51ec2470f" title="This function modify the anser once student attempts all question he/she can modify answers before su..." alt="" coords="292,360,400,387"/>
+<area shape="rect" id="node16" href="$student_8c.html#a91b3dd54097e4b33cf58646394b36444" title="This function saves the data into file once the exam accomplished." alt="" coords="448,360,539,387"/>
+</map>
