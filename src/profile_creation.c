@@ -21,11 +21,11 @@
 #include <string.h>
 
 #ifdef WINDOWS
-    #include "..\include\validation.h"
+  #include "..\include\validation.h"
 	#include "..\include\profile_creation.h"
 	#include "..\include\user_maintainance.h"
 #else
-    #include "../include/validation.h"
+  #include "../include/validation.h"
 	#include "../include/profile_creation.h"
 	#include "../include/user_maintainance.h"
 #endif
@@ -59,85 +59,94 @@ void create_prof_profile()
 	char email[100];
 	char dept[100];
 	char uni[100];
+	char pwd[20];
 	int x=0;
-    char ch;
-    int num;
-    getchar();
-    int id1=generate_Id("user_Profile.csv");
+	char ch;
+	int num;
+	getchar();
+	int id1=generate_Id("user_profiles.csv");
 	sprintf(id,"%d",id1);
-    do{
-        printf("Enter the first name of Professor\n");
-        gets(f_name);
-        x=notempty(f_name);
-    }while(x==0);
-    x=0;
-    do{
-        printf("Enter the Last name of Professor\n");
-        gets(l_name);
-        x=notempty(l_name);
-    }while(x==0);
-    x=0;
-    printf("Enter the age of Professor\n");
-    scanf("%s",age);
-    getchar();
-    do{
-        printf("Enter house/apartment number and street\n");
-        gets(address1);
-        x=notempty(address1);
-    }while(x==0);
-    x=0;
-    do{
-        printf("\nEnter city and country\n");
-        gets(address2);
-        x=notempty(address2);
-    }while(x==0);
-    x=0;
-    do{
-        printf("Enter Phone number\n");
-        scanf("%s",phonenumber);
-        x=valid_phone(phonenumber);
-    } while(x==0);
-    x=0;
-    do{
-        printf("\nEnter gender Male , Female or Others\n");
-        scanf("%s",gender);
-        if (strcasecmp(gender,"Male")==0 || strcasecmp(gender,"Female")==0 || strcasecmp(gender,"Female")==0){
-            x=1;
-            break;
-        }
-    } while(x==0);
-    x=0;
-    do{
-        printf("Enter email\n");
-        scanf("%s",email);
-        x=valid_email(email);
-    }while(x==0);
-    x=0;
-    do{
-        printf("Enter the department of Professor\n");
-        gets(dept);
-        x=notempty(dept);
-    }while(x==0);
-    x=0;
-
-    do{
-        printf("Enter the designation of Professor\n");
-        gets(uni);
-        x=notempty(uni);
-    }while(x==0); 
+	do{
+			printf("Enter the first name of Professor\n");
+			gets(f_name);
+			x=notempty(f_name);
+	}while(x==0);
+	x=0;
+	do{
+			printf("Enter the Last name of Professor\n");
+			gets(l_name);
+			x=notempty(l_name);
+	}while(x==0);
+	x=0;
+	printf("Enter the age of Professor\n");
+	scanf("%s",age);
+	getchar();
+	do{
+		printf("Enter house/apartment number and street\n");
+		gets(address1);
+		x=notempty(address1);
+	}while(x==0);
+	x=0;
+	do{
+		printf("\nEnter city and country\n");
+		gets(address2);
+		x=notempty(address2);
+	}while(x==0);
+	x=0;
+	do{
+		printf("Enter Phone number\n");
+		scanf("%s",phonenumber);
+		x=valid_phone(phonenumber);
+	} while(x==0);
+	x=0;
+	do{
+		printf("\nEnter gender Male , Female or Others\n");
+		scanf("%s",gender);
+		if (strcasecmp(gender,"Male")==0 || strcasecmp(gender,"Female")==0 || strcasecmp(gender,"Female")==0){
+			x=1;
+			break;
+		}
+	} while(x==0);
+	x=0;
+	do{
+		printf("Enter email\n");
+		scanf("%s",email);
+		x=valid_email(email);
+	}while(x==0);
+	x=0;
+	do{
+		printf("Enter the department of Professor\n");
+		gets(dept);
+		x=notempty(dept);
+	}while(x==0);
+	x=0;
+	do{
+		printf("Enter the designation of Professor\n");
+		gets(uni);
+		x=notempty(uni);
+	}while(x==0); 
+	printf("\nEnter your Password\n");
+	scanf("%s",pwd);
 	FILE * fPtr = fopen("user_profiles.csv","a"); 
-   
-	
-    if(fPtr == NULL)
-    {
-    	printf("unable to create file. \n");
-    	exit(EXIT_FAILURE);
-    } 
+  if(fPtr == NULL){
+		printf("unable to create file. \n");
+		exit(EXIT_FAILURE);
+  } 
 	else{
 		fprintf(fPtr,"%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s \n",id,f_name,l_name,age,address1,address2,phonenumber,gender,email,dept,uni,"Professor");
 		printf("\nAccount created and saved successfully \n" );
 	}
 	fclose(fPtr);
+	FILE *fstream = fopen("login_detail.txt","a");
+  if(fstream == NULL){
+    printf("\n file opening failed ");
+  }
+	else{
+			fprintf(fstream,"\n");
+			printf("Data is appended with the last line so open login_detail.txt and move the data to new line");
+			fprintf(fstream,"%s %s %s",id,pwd,"Professor");
+	}
+	fclose(fstream);
 }
 
 
@@ -172,8 +181,7 @@ If the student identification parameter is provided, that means a filename with 
 void create_student_account(char *student_identification)
 {
 	/* Set up a data structure to maintain the student account information */
-	struct profile
-	{
+	struct profile{
 		char id[13];
 		char f_name[50];
 		char l_name[50];
@@ -190,12 +198,11 @@ void create_student_account(char *student_identification)
 	};
 	struct profile pp;
 	int x=0;
-    char ch;
-    int num;
-    getchar();
-	if(student_identification==NULL)
-	{
-		int id1=generate_Id("user_Profile.csv");
+	char ch;
+	int num;
+	getchar();
+	if(student_identification==NULL){
+		int id1=generate_Id("user_profiles.csv");
 		sprintf(pp.id,"%d",id1);
 		do{
 			printf("Enter the first name of Student\n");
@@ -259,23 +266,18 @@ void create_student_account(char *student_identification)
 		}while(x==0); 
 		
 		do{
-		    printf("Enter Username\n");
+		  printf("Enter Username\n");
 			gets(pp.username);
 			x=notempty(pp.username);
 		  }while(x==0);
 
 		do{
-		    printf("Enter password\n");
+		  printf("Enter password\n");
 			gets(pp.password);
 			x=notempty(pp.password);
 		   }while(x==0);
-
-
-
 		FILE * fPtr = fopen("user_profiles.csv","a"); 
-	   
-		if(fPtr == NULL) // open the user profile in an excel spread sheet.
-		{
+		if(fPtr == NULL){  // open the user profile in an excel spread sheet.
 			printf("unable to create file. \n");
 			exit(EXIT_FAILURE);
 		} 
@@ -284,6 +286,17 @@ void create_student_account(char *student_identification)
 			printf("\nAccount created and saved successfully \n" );
 		}
 		fclose(fPtr);
+		FILE *fstream = fopen("login_detail.txt","a");
+		if(fstream == NULL)  {
+			printf("\n file opening failed ");
+		}
+	else{
+			fprintf(fstream,"\n");
+			printf("Data is appended with the last line so open login_detail.txt and move the data to new line");
+			fprintf(fstream,"\n%s %s %s\n",pp.id,pp.password,"Student");
+	}
+	fclose(fstream);
+		
 	}
 	else   /* This code updates the student account profile */
 	{

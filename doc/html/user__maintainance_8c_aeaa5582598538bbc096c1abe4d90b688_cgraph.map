@@ -1,0 +1,8 @@
+<map id="editProfile" name="editProfile">
+<area shape="rect" id="node1" title="Allows the professor to modify employee details." alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node2" href="$user__maintainance_8c.html#a7a9614c4401e1e69e2e9e11c496f7f19" title="This function gets a record form the file to update and call the function update file." alt="" coords="147,5,207,32"/>
+<area shape="rect" id="node4" href="$validation_8c.html#a41a17a1b0e1193a6527547bc81dd9080" title="Validating that string is empty or not Authors:" alt="" coords="139,56,215,83"/>
+<area shape="rect" id="node5" href="$validation_8c.html#a3b3f4c2e58ff48da389b53b28a3548d2" title="Validating the given string." alt="" coords="134,107,219,133"/>
+<area shape="rect" id="node6" href="$validation_8c.html#abe0a185859fac04fb0b08df384b15cf7" title="Validating the Phone number." alt="" coords="132,157,221,184"/>
+<area shape="rect" id="node3" href="$user__maintainance_8c.html#a717942a0b83513aa4bf81d0e29ae58d7" title="This Function updates the file user_profiles.csv once user edit their profile." alt="" coords="269,5,353,32"/>
+</map>

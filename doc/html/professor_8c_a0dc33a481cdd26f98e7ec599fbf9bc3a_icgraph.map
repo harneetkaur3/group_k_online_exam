@@ -1,0 +1,6 @@
+<map id="disp_topics1" name="disp_topics1">
+<area shape="rect" id="node1" title="int disp_topics() function display the topics" alt="" coords="373,31,468,57"/>
+<area shape="rect" id="node2" href="$professor_8c.html#a3f3a460b47e05ab45c1edb636667f523" title="void add_question(char* exam, char *u_id)" alt="" coords="227,5,325,32"/>
+<area shape="rect" id="node3" href="$professor_8c.html#a8f993fcbe7bfbdfee7b55e3248d0966c" title="This function gives the various choices to the professor to perform different functions." alt="" coords="104,31,179,57"/>
+<area shape="rect" id="node4" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="The main function which distributes various tasks to other functions." alt="" coords="5,31,56,57"/>
+</map>

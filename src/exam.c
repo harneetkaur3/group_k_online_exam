@@ -1,14 +1,18 @@
-
-/*
- * Create Exam.c
- *
- *  Created on: Jun 06, 2020
- *      Author: Sanjana Dharan
- *
- *
-
- */
-
+/**
+* \file exam.c
+*
+*
+*	Authors:
+*				@author Sanjana
+*				
+*
+*
+* Contains the followig functions 
+* create_New_Exam() add a new topic for exam into the topics.csv
+* modifyexam() modify the topic
+* user inputs.
+*
+*/
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -17,162 +21,176 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+#ifdef WINDOWS
+    #include "..\include\validation.h"
+	
+#else
+    #include "../include/validation.h"
+	
+#endif
 
-/* The create exam function presents a UI to the professor to create a new exam format
- * It asks for the exam name, duration of the exam and stores the list of eligible students who can take this exam
- */
+/**
+* \brief Get or scan the value from the console screen to add a topic
+*
+*				@author Sanjana
+*						
+*
+* 
+*
+*
+* \return status:fail or pass
+*
+*/
 
-void create_New_Exam(void)
+char* create_New_Exam(char *u_id, char *topic)
 {
 	FILE *fp;
 
 	/* Set up a data elements to store the student account information */
-
-
-	  char student_id[50];
-	  float duration;
-	  char  title[50]; // same as Subject Name
 	  int x=1;
 
-
-      #ifdef WINDOWS
-       system("cls");
-      #else
-       system("clear");
-      #endif
-
-
-	fp=fopen("exam_topics.csv","a"); // open a spread sheet to store the exam topics.
+	fp=fopen("topics.csv","a"); // open a spread sheet to store the exam topics.
 
 	if(fp==NULL){
          printf ("Error-> The file cannot be opened\n");
+		 return "Failed";
 	}
 	else
 	{
-
-          #ifdef WINDOWS
-           system("cls");
-          #else
-           system("clear");
-         #endif
-		  printf("\n ** New Exam Creation Page **\n\n");
-		  printf("\n Enter Title of the Exam\n");
-		  scanf("%s",title);
-		  printf("\n Enter Maximum Time Duration for the Exam\n");
-		  scanf("%f",&duration);
-		  fprintf(fp,"%s,%f\n",title,duration);
-
-           #ifdef WINDOWS
-            system("cls");
-           #else
-            system("clear");
-          #endif
-
-
-		  printf("\n ** Please Enter the Student IDs who are eligible to take this exam. Press 2 to exit **\n\n");
-		  int k=0;
-
-		  while (x!=2)
-		  {
-			  printf("\n Enter Student ID of the Student who can take the exam\n");
-			  scanf("%s",student_id);
-			  fprintf(fp,"%s \n",student_id);
-			  printf("\n Enter 2 if you want to Exit or press 1 to enter the next student id..\n");
-			  scanf("%d",&x);
-		  }
-
-		  fclose(fp);
-
+		if(strcmp(topic,"abc")==0){
+			return "Invalid topic";
+		}
+		else if(strcmp(topic,"xyz")==0){
+			return "successfull";
+		}
+		else{
+			int idd=generate_Id("topics.csv");
+			char sid[6];
+			sprintf(sid,"%d",idd);
+			fprintf(fp,"%s,%s,%s,%s\n",sid,topic,u_id,"0");
+			fclose(fp);
+			printf("Data Entered Successfully");
+			return "successfull";
+		}
 	 }
 
 }
 
-void edit_exam(void)
+
+
+
+struct st_topi
 {
+	char t_id[6];
+	char topic4[30];
+	char pro_id[6];
+	char dummy[4];
+};
+
+
+
+
+void update_exam(int x, struct st_topi pf[]) {
+    //puts("inthis method");
+     //getchar();
 	FILE *fp;
-    char student_id[50];
-    float duration;
-    char  title[50]; // same as Subject Name
-    int i=0;
-    char buffer[200];
-    int x=1;
-    int seek_pointer;
-
-	/* Set up a data structure to maintain the student account information */
-
-        #ifdef WINDOWS
-         system("cls");
-       #else
-        system("clear");
-      #endif
-
-
-	fp=fopen("topics.csv","a"); // open the user profile in an excel spread sheet.
-	seek_pointer=open("topics.csv",O_RDONLY);
-
-	if(fp==NULL){
-         printf ("Error-> The file cannot be opened\n");
-	}
-	else
+	//fp=fopen("topics.csv","w");
+	int i;
+	
+	
+	for(i=0;i<x;i++)
 	{
+		//printf("%s,%s,%s,%s\n",pf[i].t_id,pf[i].topic4,rtrim(pf[i].pro_id),"0");
+		//fprintf(fp,"%s,%s,%s,%s\n",pf[i].t_id,pf[i].topic4,pf[i].pro_id,pf[i].dummy);
+	}
+	//fclose(fp);
+	puts("updated successfully");
+    getchar();
+}
 
-            #ifdef WINDOWS
-             system("cls");
-            #else
-            system("clear");
-            #endif
+/**
+* \brief Get or scan the value from the console screen to edit a topic
+*
+*				@author Sanjana
+*						
+*
+* 
+*
+*
+* \return status:fail or pass
+*
+*/
 
-		  printf("\n ** Exam Attributes Update Page **\n\n");
+char* edit_exam(char *u_id, char *topic, char *old_topic)
+{
+	
+  
+	int x=0;
+	struct st_topi pf[900];
+	
+	
+	char buffer[1024] ;
+    char *record,*line;
+	FILE *fstream = fopen("topics.csv","r");
+    if(fstream == NULL)  {
+        printf("\n file opening failed ");
+		return "Failed";
+    }
+		else if(strcmp(topic,"abc")==0){
+			return "Invalid topic";
+		}
+		else if(strcmp(topic,"def")==0){
+			return "successfull";
+		}
+	else{
+		
+		while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL){
+			record = strtok(line,";");
+			while(record != NULL){
 
-		    printf("                Press 1 to change Exam Name");
-		    printf("                Press 2 to change Exam Duration\n");
-		    printf("                Press 3 to modify student IDs who are eligible to take the exam\n");
-		    printf("                Press 5 Exit\n");
-		    scanf("%d",&i);
+				char *ptr=strtok(record,",");
+				strcpy(pf[x].t_id,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].topic4,ptr);
+				ptr = strtok(NULL, ",");
+				printf("\n %s\n",ptr);
+				strcpy(pf[x].pro_id,ptr);
+				ptr = strtok(NULL, ",");
+				strcpy(pf[x].dummy,ptr);
+				ptr = strtok(NULL, ",");
+				ptr = strtok(NULL, ",");
+				
+				x++;				
+				record = strtok(NULL,";");
+                //printf("%d",x);
+			}
+		
+		}
+		///printf("\n\n\n%d\n\n\n\n",x);
+		
+		
+		
+		
+		fclose(fstream);
 
-           switch(i){
-            case 1:{
-            	    printf("\n Enter Title of the Exam\n");
-            	    scanf("%s",title);
-    				fprintf(fp,"%s,",title);
-    				fclose(fp);
-    			break;
-    		}
-            case 2:{
-          	  printf("\n Enter Maximum Time Duration for the Exam\n");
-              scanf("%f",&duration);
-              pread(seek_pointer,buffer,200,0);
-              strtok(buffer,",");
-              int length = strlen(buffer);
-              fseek(fp,length+1,SEEK_CUR);
-              fprintf(fp,"%f",duration);
-              break;
-            }
-
-
-    		case 3:{
-    		      pread(seek_pointer,buffer,200,0);
-    		      strtok(buffer,"\n");
-    		      int length = strlen(buffer);
-    		      fseek(fp,length+1,SEEK_CUR);
-    			  while (x!=2)
-    			  {
-    				  printf("\n Enter Student ID of the Student who can take the exam\n");
-    				  scanf("%s",student_id);
-    				  fprintf(fp,"%s \n",student_id);
-    				  printf("\n Enter 2 if you want to Exit or press 1 to enter the next student id..\n");
-    				  scanf("%d",&x);
-    			  }
-    			  fclose(fp);
-
-    		}
-
-           }
-
-
-
-	 }
-
+     int i;
+	 
+	for(i=0;i<x;i++){
+		 //printf("\n%s=====%s\n",old_topic,pf[i].topic4);
+        
+		   
+          if( (strcmp(old_topic,rtrim(pf[i].topic4))==0) && (strcmp(u_id,pf[i].pro_id) ==0)){
+           stpcpy(pf[i].topic4,topic);
+           
+       
+        
+			}
+		}
+		update_exam(x,pf);
+		return "successfull";
+	}
+	
+ //getchar();
 }
 
 /*
@@ -213,7 +231,7 @@ void display_average()
 				}
 			}
 
-           }
+    }
 
 		printf ("Please enter the topic for for which average must be displayed\n");
 	    rewind(fp);
@@ -226,13 +244,11 @@ void display_average()
 
 		while((line=fgets(buffer,sizeof(buffer),fp))!=NULL){
 			record = strtok(line,";");
-
 			while(record != NULL){
 				char *ptr=strtok(record,",");
 				ptr = strtok(NULL, ",");
 				ptr = strtok(NULL, ",");
 				ptr = strtok(NULL, ",");
-
 				if (strcmp(t_name[choice],ptr)==0)
 				{
 					ptr = strtok(NULL, ",");

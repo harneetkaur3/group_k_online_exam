@@ -1,0 +1,9 @@
+<map id="create_student_account" name="create_student_account">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,167,133"/>
+<area shape="rect" id="node2" href="$validation_8c.html#afb2bbfb20e6bc24bd2067826954de37e" title="This function generate a unique serial number for a file to insert the data." alt="" coords="215,5,304,32"/>
+<area shape="rect" id="node3" href="$user__maintainance_8c.html#a7a9614c4401e1e69e2e9e11c496f7f19" title="This function gets a record form the file to update and call the function update file." alt="" coords="229,56,289,83"/>
+<area shape="rect" id="node5" href="$validation_8c.html#a41a17a1b0e1193a6527547bc81dd9080" title="Validating that string is empty or not Authors:" alt="" coords="221,107,297,133"/>
+<area shape="rect" id="node6" href="$validation_8c.html#a3b3f4c2e58ff48da389b53b28a3548d2" title="Validating the given string." alt="" coords="217,157,302,184"/>
+<area shape="rect" id="node7" href="$validation_8c.html#abe0a185859fac04fb0b08df384b15cf7" title="Validating the Phone number." alt="" coords="215,208,304,235"/>
+<area shape="rect" id="node4" href="$user__maintainance_8c.html#a717942a0b83513aa4bf81d0e29ae58d7" title="This Function updates the file user_profiles.csv once user edit their profile." alt="" coords="352,56,436,83"/>
+</map>

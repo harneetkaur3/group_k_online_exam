@@ -25,13 +25,13 @@
 #define range 5
 #define id_range 10
 #ifdef WINDOWS
-    #include "..\include\user_maintainance.h"
+	#include "..\include\user_maintainance.h"
 	#include "..\include\validation.h"
 	#include "..\include\student.h"
 	#include "..\include\professor.h"
 	#include "..\include\profile_creation.h"
 #else
-    #include "../include/user_maintainance.h"
+   #include "../include/user_maintainance.h"
 	#include "../include/validation.h"
 	#include "../include/student.h"
 	#include "../include/professor.h"
@@ -85,17 +85,16 @@ int getch(void){
 
 int main(int argc, char *argv[]){
 	int i,id;
-    char ch[range];
-    char pwd[25];
+	char ch[range];
+	char pwd[25];
 	char id1[11];
-    char u_type[25];
+	char u_type[25];
 	system("clear");
 	printf("\n*********************************************************************\n");
-    printf("                               Welcome to online Examination                                   \n");
-    printf("\n*********************************************************************\n");
-
-    printf("                Press 1 LOGIN\n");
-    printf("                Press 2 EXIT\n");
+	printf("                               Welcome to online Examination                                   \n");
+	printf("\n*********************************************************************\n");
+	printf("                Press 1 LOGIN\n");
+  printf("                Press 2 EXIT\n");
 	printf("                Press 3 Create a New Profile...\n");
 	fgets(ch,range,stdin);
 	switch(atoi(ch)){
@@ -106,23 +105,23 @@ int main(int argc, char *argv[]){
 			printf("\nEnter your Password:");
 			int p=0;
 			do{
-                pwd[p]=getch();
-                if((pwd[p]=='\b' ||pwd[p]==127)&& p>0){
-                    p--;
-                    printf("\b \b");
-                    continue;
-                }
-                if(pwd[p]!='\r'){
-                    printf("*");
-                }
-                if(pwd[p]=='\n'||pwd[p]==13){
-                    p++;
-                    break;
-                }
-                p++;
-            }while(pwd[p-1]!='\r'||pwd[p-1]!=13);
-            pwd[p-1]='\0';
-			stpcpy(id1,rtrim(id1));
+				pwd[p]=getch();
+				if((pwd[p]=='\b' ||pwd[p]==127)&& p>0){
+						p--;
+						printf("\b \b");
+						continue;
+				}
+				if(pwd[p]!='\r'){
+						printf("*");
+				}
+				if(pwd[p]=='\n'||pwd[p]==13){
+					p++;
+					break;
+				}
+				p++;
+			}while(pwd[p-1]!='\r'||pwd[p-1]!=13);
+			pwd[p-1]='\0';
+			strcpy(id1,rtrim(id1));
 			strcpy(u_type,login(id1,pwd));
 			if(strcmp(u_type,"Admin")==0){
 				//code

@@ -1,0 +1,4 @@
+<map id="getrow" name="getrow">
+<area shape="rect" id="node1" title="This function gets a record form the file to update and call the function update file." alt="" coords="5,5,65,32"/>
+<area shape="rect" id="node2" href="$user__maintainance_8c.html#a717942a0b83513aa4bf81d0e29ae58d7" title="This Function updates the file user_profiles.csv once user edit their profile." alt="" coords="113,5,197,32"/>
+</map>
