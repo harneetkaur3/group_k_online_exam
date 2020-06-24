@@ -24,6 +24,18 @@ int professor(char *);
  *
  */
 
-void add_question(char* , char *);
+char* add_question(char* , char *);
+
+
+ /**  @brief Function prototypes to generate a result
+ *
+ *  
+ * This function is used to gerate the result
+ * 
+ *
+ */
+
+char* mark_questions_and_display_results(char* ,char *, char *);
+
 
 #endif
